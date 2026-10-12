@@ -492,6 +492,18 @@ label.fcn1{cursor:pointer}label.fcn1:hover,.fcn1.mine{border-color:var(--rose)}
 /* ===== Little WILLiever Companion ===== */
 #companion .pq{--paper:#f7f0e4;--paper2:#efe3d0;--cocoa:#4a3326;--cocoa2:#7d5f4b;--edge:#dccab0}
 #companion .pq [hidden]{display:none!important}
+.pq-lounge{position:relative;aspect-ratio:16/11;margin-top:12px;border-radius:14px;overflow:hidden;border:1.5px solid var(--edge);background:linear-gradient(#f6d9e3 0,#f6d9e3 44%,#c99a6b 44%,#b98557 100%)}
+.pq-lounge::before{content:"";position:absolute;left:12%;right:12%;bottom:6%;height:34%;border-radius:50%;background:#e9708f55}
+.pq-lounge .dc{position:absolute;font-size:30px;line-height:1;pointer-events:none}
+.pq-lp{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;width:62px;padding:0;border:0;background:none;cursor:pointer;color:var(--cocoa);transition:left 4s ease-in-out,top 4s ease-in-out}
+.pq-lp .s{display:block;width:54px;height:54px;transition:transform .4s}
+.pq-lp svg{width:100%;height:100%;display:block}
+.pq-lp small{max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:600 11px var(--sans);background:#fffaf1e6;border-radius:99px;padding:0 7px;margin-top:-4px}
+.pq-lp.me small{background:var(--rose);color:#fff}
+.pq-lp[aria-pressed=true] small{outline:2px solid var(--rose)}
+.pq-lp:focus-visible{outline:2px solid var(--cocoa);border-radius:10px}
+.pq-tray{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px;min-height:38px}
+@media (prefers-reduced-motion:reduce){.pq-lp{transition:none}}
 .pq-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:30px;align-items:start}
 .pq-left,.pq-right{min-width:0}
 .pq-left{display:grid;gap:18px;position:sticky;top:76px}
@@ -685,6 +697,9 @@ body.pq-instage .pq-fl,body.ed .pq-fl,body.ed .pq-showb{display:none}
 <div class="pq-paper pq-set"><h3>Your companion</h3><label for="pq-name" style="display:block;margin:0 0 6px">Give it a nickname (up to 14 letters)</label><input type="text" id="pq-name" maxlength="14" autocomplete="off" placeholder="Little WILLiever"><small id="pq-namem" role="status"></small>
 <label><input type="checkbox" id="pq-showfl"> Show my companion while I browse</label><label><input type="checkbox" id="pq-quiet"> Quiet mode (fewer speech bubbles)</label>
 <div class="pq-row"><button type="button" class="pq-chip" id="pq-reset">Reset my companion</button></div></div>
+<div class="pq-paper" id="pq-soc"><h3>Companion lounge</h3><p class="pq-sm">Opt in to join the lounge, where every visitor’s companion hangs out together. Tap a companion to say hi. Only the nickname, outfit and level are shared. Greetings are preset emoji, so there is no chat.</p>
+<label style="display:flex;gap:8px;align-items:center;margin:8px 0"><input type="checkbox" id="pq-socon"> Let others see my companion</label>
+<p class="pq-sm" id="pq-socm" role="status">You are hidden. Turn this on to join the lounge and meet other companions.</p><div class="pq-lounge" id="pq-lounge" hidden aria-label="Companion lounge"><span class="dc" style="left:4%;top:20%" aria-hidden="true">🛋️</span><span class="dc" style="right:5%;top:18%" aria-hidden="true">🪴</span><span class="dc" style="left:46%;top:6%" aria-hidden="true">🎶</span></div><div class="pq-tray" id="pq-tray" role="group" aria-label="Say hi"></div><ul class="pq-dm" id="pq-hiin" aria-label="Greetings you received"></ul></div>
 </div>
 <div class="pq-right pq-paper">
 <div class="pq-tabs" role="tablist" aria-label="Companion menu"><button type="button" role="tab" id="pq-tab-play" aria-controls="pq-pn-play" aria-selected="true">Play</button><button type="button" role="tab" id="pq-tab-ward" aria-controls="pq-pn-ward" aria-selected="false" tabindex="-1">Dress-up</button><button type="button" role="tab" id="pq-tab-col" aria-controls="pq-pn-col" aria-selected="false" tabindex="-1">Collection</button><button type="button" role="tab" id="pq-tab-diary" aria-controls="pq-pn-diary" aria-selected="false" tabindex="-1">Diary</button><button type="button" role="tab" id="pq-tab-room" aria-controls="pq-pn-room" aria-selected="false" tabindex="-1">Cozy room</button></div>
@@ -1290,7 +1305,7 @@ $('mb-ok').onclick=function(){
  S.mb=S.mb||[];S.mb.forEach(function(x,i){if(x.id===o.id){S.mb[i]=o;done=true}});if(!done)S.mb.push(o);
  $('mbm').hidden=true;renderMB();save()};
 $('mb-del').onclick=function(){if(!confirm('Delete this mission?'))return;S.mb=(S.mb||[]).filter(function(x){return x.id!==mbId});$('mbm').hidden=true;renderMB();save()};
-var _op4=openPanel;openPanel=function(){_op4();renderMB()};
+var _op6=openPanel;openPanel=function(){_op6();renderMB()};
 var _dn=$('ep-done').onclick;$('ep-done').onclick=function(){_dn();renderMB()};
 renderMB();
 
@@ -1836,7 +1851,7 @@ function iwImg(){S.iw=S.iw||[];if(!S.iw.length)return;withFonts(function(){mkCar
   y+=34;c.fillStyle=k.ln;c.fillRect(P,y,W-2*P,1)});
  return cfoot(c,P,W,y+30,k,['An independent fan record. Not affiliated with Will Ashley, GMA Network or his management.'])},'impact-wall.png')})}
 $('iw-dl').onclick=iwImg;
-var _op5=openPanel;openPanel=function(){_op5();renderFC();renderIW()};
+var _op7=openPanel;openPanel=function(){_op7();renderFC();renderIW()};
 var _dn2=$('ep-done').onclick;$('ep-done').onclick=function(){_dn2();renderFC();renderIW()};
 renderFC();renderIW();
 
@@ -2221,6 +2236,60 @@ $('pq-dropgo').onclick=openDrop;$('pq-hunt').onclick=startHunt;$('pq-hunthint').
 $('pq-dmore').onclick=function(){dshow+=12;renderDiary()};
 $('pq-dsave').onclick=function(){var L=['My Little WILLiever diary','Unofficial fan companion','']; S.diary.slice().reverse().forEach(function(e){L.push(e.d+'  '+e.t)});var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([L.join('\r\n')],{type:'text/plain'}));a.download='little-williever-diary.txt';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},600)};
 $('pq-roomgo').onclick=function(){var it=find(listB(),'room');if(!unl(it)){say(reqText(it.r)+' to unlock the Cozy Room.',{f:1});return}equip('b',it);$('pq-stagebox').scrollIntoView({behavior:RM?'auto':'smooth',block:'center'})};
+
+/* companion lounge (opt-in, preset emoji only) */
+(function(){
+var SU='https://ntcdqdfhblmcgbypnkwk.supabase.co',SK='sb_publishable_9mQYTiI4h0Nr2Sjb1qVJ6A_9W9Wojsk',AR='will-ashley',SH={'Content-Type':'application/json',apikey:SK,Authorization:'Bearer '+SK};
+var KINDS={wave:'\uD83D\uDC4B',heart:'\uD83D\uDC99',spark:'\u2728'},sinceT=null,tm=0,wt=0,busy=false,sent={},sel=null,cmp={},lastRows=[];
+function srpc(fn,b){return fetch(SU+'/rest/v1/rpc/'+fn,{method:'POST',headers:SH,body:JSON.stringify(b)}).then(function(r){if(!r.ok)throw r.status;return r.json()})}
+function cid(){try{var v=localStorage.getItem('wa_pup_cid');if(!v){v=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2);localStorage.setItem('wa_pup_cid',v)}return v}catch(e){return null}}
+function on(){try{return localStorage.getItem('wa_pup_soc')==='1'}catch(e){return false}}
+function msg(t){$('pq-socm').textContent=t}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+function seed(id){var n=0;for(var i=0;i<id.length;i++)n=(n*31+id.charCodeAt(i))>>>0;return n}
+function place(c,x,y){c.x=x;c.y=y;c.el.style.left=x+'%';c.el.style.top=y+'%';c.el.style.zIndex=Math.round(y)}
+function mkc(id,me){var b=el('button','pq-lp'+(me?' me':'')),s=el('span','s'),n=el('small');b.type='button';b.appendChild(s);b.appendChild(n);
+ var q=seed(id),c={id:id,el:b,s:s,n:n,me:me,key:''};b.onclick=function(){pickc(c)};
+ $('pq-lounge').appendChild(b);place(c,8+q%8400/100,52+(q>>>8)%3400/100);return c}
+function fill(c,name,o,a,lvl){var key=[name,o,a,lvl].join('|');if(c.key===key)return;c.key=key;var nm=name||'Little WILLiever';
+ c.s.innerHTML=pupSVG({mood:'happy',o:find(listO(),o),a:a||'none'},'','');c.n.textContent=c.me?'You':nm;c.name=nm;c.lvl=lvl;
+ c.el.setAttribute('aria-label',c.me?'Your companion':nm+', level '+lvl+'. Choose to say hi')}
+function tray(){var t=$('pq-tray');t.textContent='';var c=sel&&cmp[sel];if(!c||c.me){t.appendChild(el('span','pq-sm',c&&c.me?'That\u2019s you! Tap a friend to say hi.':'Tap a companion to say hi.'));return}
+ t.appendChild(el('b',null,c.name+' \u00B7 Level '+c.lvl));
+ Object.keys(KINDS).forEach(function(k){var b=el('button','pq-chip',KINDS[k]),key=c.id+k;b.type='button';b.setAttribute('aria-label','Send '+k+' to '+c.name);b.disabled=!!sent[key];
+  b.onclick=function(){b.disabled=true;sent[key]=1;setTimeout(function(){delete sent[key]},600000);
+   srpc('companion_say_hi',{p_artist:AR,p_cid:cid(),p_to_pid:c.id,p_kind:k}).then(function(x){
+    if(x==='ok')say('You said hi to '+c.name+'! '+KINDS[k],{f:1});
+    else{delete sent[key];b.disabled=false;msg(x==='limited'?'Easy there! You can say hi to the same friend again in a few minutes.':'That companion just left.')}
+   }).catch(function(){delete sent[key];b.disabled=false;msg('Could not send. Please try again.')})};
+  t.appendChild(b)})}
+function pickc(c){sel=c.id;Object.keys(cmp).forEach(function(k){cmp[k].el.setAttribute('aria-pressed',String(k===sel))});tray()}
+function draw(rows){var L=$('pq-lounge');L.hidden=false;lastRows=rows;var seen={};
+ if(!cmp.me)cmp.me=mkc('me',true);fill(cmp.me,S.name,S.eq.o,S.eq.a,lvl());seen.me=1;
+ rows.forEach(function(r){seen[r.pid]=1;if(!cmp[r.pid])cmp[r.pid]=mkc(r.pid,false);fill(cmp[r.pid],r.name,r.o,r.a,r.lvl)});
+ Object.keys(cmp).forEach(function(k){if(!seen[k]){cmp[k].el.remove();delete cmp[k];if(sel===k)sel=null}});
+ msg(rows.length?'There '+(rows.length===1?'is 1 friend':'are '+rows.length+' friends')+' in the lounge with you.':'You are the first one here. Friends will appear as they join!');
+ tray()}
+function wander(){if(RM||document.hidden)return;Object.keys(cmp).forEach(function(k){var c=cmp[k];if(Math.random()<.45)return;
+ var nx=clamp(c.x+(Math.random()*20-10),7,93),ny=clamp(c.y+(Math.random()*10-5),52,90);c.s.style.transform=nx<c.x?'scaleX(-1)':'';place(c,nx,ny)})}
+function inbox(){return srpc('companion_inbox',{p_artist:AR,p_cid:cid(),p_since:sinceT}).then(function(rows){
+ var ul=$('pq-hiin');if(!Array.isArray(rows))return;
+ rows.forEach(function(r){sinceT=r.sent_at;var li=el('li');li.appendChild(el('span',null,KINDS[r.kind]||'\uD83D\uDC4B'));li.appendChild(el('span',null,(r.from_name||'A companion')+' says hi!'));ul.insertBefore(li,ul.firstChild)});
+ while(ul.children.length>5)ul.removeChild(ul.lastChild);
+ if(rows.length){var f=rows[rows.length-1];react('wave',(f.from_name||'Someone')+' says hi! '+(KINDS[f.kind]||''),3500,1)}})}
+function tick(){if(!on()||document.hidden||busy||!cid())return;busy=true;
+ srpc('companion_ping',{p_artist:AR,p_cid:cid(),p_name:S.name||'',p_o:S.eq.o,p_a:S.eq.a,p_b:S.eq.b,p_lvl:lvl()}).then(function(x){
+  if(x==='full'){msg('The lounge is full right now. Please try again later.');return}
+  return Promise.all([srpc('companion_nearby',{p_artist:AR,p_cid:cid()}).then(draw),inbox()])
+ }).catch(function(){msg('Could not reach the lounge right now.')}).then(function(){busy=false})}
+function clear(){var L=$('pq-lounge');Object.keys(cmp).forEach(function(k){cmp[k].el.remove()});cmp={};sel=null;L.hidden=true;$('pq-tray').textContent='';$('pq-hiin').textContent=''}
+function start(){clearInterval(tm);clearInterval(wt);msg('Walking into the lounge\u2026');tm=setInterval(tick,30000);wt=setInterval(wander,4500);tick()}
+function stop(){clearInterval(tm);clearInterval(wt);clear();msg('You are hidden. Turn this on to join the lounge and meet other companions.');srpc('companion_leave',{p_artist:AR,p_cid:cid()}).catch(function(){})}
+var cb=$('pq-socon');cb.checked=on();
+cb.onchange=function(){try{localStorage.setItem('wa_pup_soc',this.checked?'1':'0')}catch(e){}if(this.checked)start();else stop()};
+document.addEventListener('visibilitychange',function(){if(!document.hidden)tick()});
+if(on())start();
+})();
 wireSite();watchSections();init();showTab('play');
 
 })();</script>
