@@ -635,6 +635,10 @@ body.pq-instage .pq-fl,body.ed .pq-fl,body.ed .pq-showb{display:none}
 @media(max-width:900px){.pq-grid{grid-template-columns:minmax(0,1fr)}.pq-left{position:static}}
 @media(max-width:520px){.pq-paper{padding:16px}.pq-pet{width:70px;height:70px}.pq-bub{bottom:76px;font-size:18px}.pq-lv{grid-template-columns:52px 1fr}.pq-emb{width:52px;height:52px;font-size:24px}}
 @media print{.pq-fl,.pq-showb,#pq-fx,#companion{display:none!important}}
+.fps{display:grid;gap:8px;margin-top:10px;max-width:440px}.fps .note{margin:0}
+.fpg{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:8px 0 18px}
+.fpc{display:grid;gap:6px;padding:8px;border:1px solid var(--line);border-radius:12px;background:var(--ink2);font-size:13px}
+.fpc img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px}
 </style></head><body><nav><div class="wrap"><a class="brand" href="#home"><b>WA</b><span>WILL ASHLEY<small>ACTOR PORTFOLIO</small></span></a><div class="nl"><a href="#home">Home</a><a href="#filmography">Filmography</a><a href="#awards">Recognition</a><a href="#press">Press</a><a href="#gallery">Gallery</a><a href="#clips">Willievers Corner</a><a href="#letters">Letters to Will</a><a href="#capsule">Time Capsule</a><a href="#world">Around the World</a><a href="#mission">Mission Board</a><a href="#companion">Companion</a><a href="#scrapbook">Scrapbook</a><a href="#willaughers">WILLaughers</a><a href="#williever-id">WILLiever ID</a><a href="#fan-choice">Fan Choice</a><a href="#impact">Impact Wall</a><a href="#fandom">Fandom</a><a href="#about">About</a></div><a class="fol" href="#press">Latest news</a></div></nav>
 <header class="hero hx" id="home"><div class="hbg"><div class="ph" data-id="hero"></div></div><div class="wrap"><small class="eyebrow">FILIPINO ACTOR &amp; SINGER</small><h1><em>Will</em>Ashley</h1><p class="tag">From young versions of lead roles<br>to award-winning supporting turns.</p><a class="ghost" href="#filmography">Explore Filmography →</a>
 <div class="stats"><div>Born <b>Sep 17, 2002</b></div><div>Label <b>GMA Sparkle</b></div><div>Latest <b>Best Supporting Actor, Gawad Urian 2026</b></div></div></div></header>
@@ -718,10 +722,11 @@ body.pq-instage .pq-fl,body.ed .pq-fl,body.ed .pq-showb{display:none}
 
 <section id="scrapbook" class="alt"><div class="wrap"><h2>Build Your Own Will Scrapbook</h2>
 <p class="note">Make a digital scrapbook with photos, stickers, captions and frames. Save it as an image and share it on X or anywhere you like.</p>
-<p class="note" id="sb-lic">Photos in the library are shared with permission or properly licensed, and their credits are added to your image automatically. You can also add your own photos; they stay on your device and are never uploaded. Please use only photos you own or have permission to use.</p>
+<div id="fppend"></div>
+<p class="note" id="sb-lic">Photos in the library are shared with permission or properly licensed, and their credits are added to your image automatically. You can also add your own photos; by default they stay on your device. If you tick the share box, the photo is uploaded and shown to everyone in the library once it has been reviewed. Please use only photos you own or have permission to use.</p>
 <div class="sbw"><div><canvas id="sbc" width="1080" height="1080" aria-label="Scrapbook canvas"></canvas></div>
 <div class="sbr"><div class="sbtabs" role="group" aria-label="Scrapbook tools"><button type="button" data-p="ph" aria-pressed="true">Photos</button><button type="button" data-p="st" aria-pressed="false">Stickers</button><button type="button" data-p="tx" aria-pressed="false">Text</button><button type="button" data-p="bg" aria-pressed="false">Style</button></div>
-<div class="sbp" data-p="ph"><div id="sb-lib"></div><p class="note" id="sb-nolib">No library photos yet. You can still add your own.</p><label class="dadd sbf">+ My photo<input type="file" id="sb-up" accept="image/*" hidden></label></div>
+<div class="sbp" data-p="ph"><div id="sb-lib"></div><p class="note" id="sb-nolib">No library photos yet. You can still add your own.</p><label class="dadd sbf">+ My photo<input type="file" id="sb-up" accept="image/*" hidden></label><div class="fps"><label class="mmc2"><input type="checkbox" id="sb-fpk"> Share my photo with all WILLievers in the library (reviewed first)</label><input class="sbi" id="sb-fpc" maxlength="60" placeholder="Credit, e.g. your nickname (optional)" aria-label="Photo credit"><small class="note" id="sb-fpm" role="status">Only share photos you own or have permission to use.</small></div></div>
 <div class="sbp" data-p="st" hidden><div id="sb-stk"></div></div>
 <div class="sbp" data-p="tx" hidden><input class="sbi" id="sb-txt" maxlength="60" placeholder="Type a caption or message" aria-label="Text"><select class="sbi" id="sb-font" aria-label="Font"></select><button type="button" id="sb-addt" class="dadd">Add text</button></div>
 <div class="sbp" data-p="bg" hidden><div id="sb-bg"></div><select class="sbi" id="sb-size" aria-label="Canvas size"><option value="1080x1080">Square 1:1</option><option value="1080x1350">Portrait 4:5</option></select></div>
@@ -735,11 +740,11 @@ body.pq-instage .pq-fl,body.ed .pq-fl,body.ed .pq-showb{display:none}
 <p class="note" id="sb-m" role="status">Tip: drag items on the canvas to move them. On X, tap Save image first, then attach it to your post.</p></div></div></div></section>
 <section id="willaughers"><div class="wrap"><h2>WILLaughers</h2>
 <p class="note">The WILLievers meme generator. Pick a Will photo, add your own top and bottom captions, then save your meme card as a picture or download it as a GIF and share it on X.</p>
-<p class="note" id="mm-lic">Photos in the library are shared with permission or properly licensed, and their credits are added to your meme automatically. You can also use your own photo; it stays on your device and is never uploaded. Please use only photos you own or have permission to use. Keep it fun and kind: memes should never mock, harass or humiliate anyone.</p>
+<p class="note" id="mm-lic">Photos in the library are shared with permission or properly licensed, and their credits are added to your meme automatically. You can also use your own photo; by default it stays on your device. If you tick the share box, the photo is uploaded and shown to everyone in the library once it has been reviewed. Please use only photos you own or have permission to use. Keep it fun and kind: memes should never mock, harass or humiliate anyone.</p>
 <div class="sbw"><div><canvas id="mmc" width="1080" height="1080" aria-label="Meme preview"></canvas><p class="note" style="margin-top:8px">Drag the photo to move it.</p></div>
 <div class="mmg">
 <div class="mmh">1. Choose a photo</div><div id="mm-lib"></div><p class="note" id="mm-nolib">No library photos yet. You can still use your own.</p>
-<label class="dadd sbf" style="justify-self:start">+ My photo<input type="file" id="mm-up" accept="image/*" hidden></label>
+<label class="dadd sbf" style="justify-self:start">+ My photo<input type="file" id="mm-up" accept="image/*" hidden></label><div class="fps"><label class="mmc2"><input type="checkbox" id="mm-fpk"> Share my photo with all WILLievers in the library (reviewed first)</label><input class="sbi" id="mm-fpc" maxlength="60" placeholder="Credit, e.g. your nickname (optional)" aria-label="Photo credit"><small class="note" id="mm-fpm" role="status">Only share photos you own or have permission to use.</small></div>
 <div class="mmh">2. Add your captions</div>
 <label class="sbl" style="margin-top:0">Top text<input class="sbi" id="mm-top" maxlength="80" placeholder="Top caption"></label>
 <label class="sbl" style="margin-top:0">Bottom text<input class="sbi" id="mm-bot" maxlength="80" placeholder="Bottom caption"></label>
@@ -781,7 +786,8 @@ body.pq-instage .pq-fl,body.ed .pq-fl,body.ed .pq-showb{display:none}
 <section id="fandom"><div class="wrap"><h2>Fanbase &amp; fan page directory</h2>
 <p class="note">This directory lists more than platforms: each entry is a specific fan account along with its role in the fandom. Only verified, publicly available accounts are listed, and a contact person is shown only when it is publicly provided.</p>
 <p class="note">Official account (not a fan page): Instagram <a href="https://www.instagram.com/willashley17/" target="_blank" rel="noopener">@willashley17</a>, as credited by GMA News.</p>
-<div id="dadmin" hidden><button type="button" id="d-new" class="dadd">+ Add entry</button>
+<button type="button" id="d-unlock" class="dadd">Edit directory</button>
+<div id="dadmin" hidden><button type="button" id="d-new" class="dadd">+ Add entry</button> <button type="button" id="d-lock" class="ddel">Lock editing</button>
 <div id="dform" class="dform" hidden><h3 id="d-ft">Add an entry</h3><p class="note">Please add only public, verified accounts.</p>
 <div class="dfg"><label>Category<select id="d-cat"></select></label><label>Account name<input id="d-name" maxlength="120"></label><label>Username<input id="d-un" maxlength="80" placeholder="@username"></label><label>Platform<input id="d-pf" maxlength="60" placeholder="X, Instagram, Facebook, TikTok, YouTube"></label><label>Link<input id="d-link" maxlength="400" placeholder="https://"></label><label>Contact person (only if public)<input id="d-ct" maxlength="120"></label><label class="wide">Short description and role in the fandom<textarea id="d-desc" rows="2" maxlength="400"></textarea></label></div>
 <button type="button" id="d-save" class="dadd">Save entry</button> <button type="button" id="d-cancel" class="ddel">Cancel</button> <span id="d-msg" role="status"></span></div></div>
@@ -835,7 +841,7 @@ function render(){
    if(d.desc)a.appendChild(el('p',null,d.desc));
    if(d.link&&/^https?:\/\//i.test(d.link)){var s=el('small'),l=el('a',null,'Visit page →');l.href=d.link;l.target='_blank';l.rel='noopener';s.appendChild(l);a.appendChild(s)}
    if(d.contact)a.appendChild(el('small',null,'Contact: '+d.contact));
-   if(canEdit&&d._id){var ed=el('button','ddel','Edit');ed.type='button';ed.onclick=function(){openForm(d)};a.appendChild(ed);var x=el('button','ddel','Remove');x.type='button';x.style.marginLeft='6px';x.onclick=function(){if(x.dataset.c){rpc('directory_delete',{p_artist:ARTIST,p_password:adminPw,p_id:d._id}).then(load).catch(function(){x.textContent='Could not remove'})}else{x.dataset.c='1';x.textContent='Tap again to confirm'}};a.appendChild(x)}
+   if(canEdit&&d._id){var ed=el('button','ddel','Edit');ed.type='button';ed.onclick=function(){openForm(d)};a.appendChild(ed);var x=el('button','ddel','Remove');x.type='button';x.style.marginLeft='6px';x.onclick=function(){if(x.dataset.c){rpc('directory_delete',{p_artist:ARTIST,p_password:adminPw,p_id:d._id}).then(load).catch(function(e){x.textContent=(e&&e.status===404)?'directory_delete missing in Supabase':'Could not remove'})}else{x.dataset.c='1';x.textContent='Tap again to confirm'}};a.appendChild(x)}
    g.appendChild(a)});box.appendChild(g)}
   list.appendChild(box)})
 }
@@ -844,11 +850,16 @@ var SB_URL='https://ntcdqdfhblmcgbypnkwk.supabase.co',SB_KEY='sb_publishable_9mQ
 function load(){fetch(SB_URL+'/rest/v1/fan_directory?select=*&artist=eq.'+encodeURIComponent(ARTIST)+'&order=created_at.asc',{headers:HD})
  .then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
  .then(function(rows){DIRECTORY=rows.map(function(r){return{_id:r.id,cat:r.category,name:r.name,username:r.username,platform:r.platform,desc:r.description,link:r.link,contact:r.contact}});render()})
- .catch(function(){})}
+ .catch(function(){if(!DIRECTORY.length){var m=el('p','dempty','Could not load the directory right now. Please refresh in a moment.');m.id='d-loadfail';if(!document.getElementById('d-loadfail'))list.insertBefore(m,list.firstChild)}})}
 function rpc(fn,body){return fetch(SB_URL+'/rest/v1/rpc/'+fn,{method:'POST',headers:Object.assign({'Content-Type':'application/json'},HD),body:JSON.stringify(body)}).then(function(r){return r.text().then(function(t){var j;try{j=JSON.parse(t)}catch(e){j=t}if(!r.ok)throw{status:r.status,body:j};return j})})}
 var $=function(i){return document.getElementById(i)},dm=$('d-msg'),dsel=$('d-cat');
 CATS.forEach(function(c){var o=document.createElement('option');o.textContent=c[1];o.value=c[0];dsel.appendChild(o)});
 function fv(i){return $(i).value.trim()}
+function errMsg(x,fn){var s=x&&x.status,t=JSON.stringify(x&&x.body||'');
+ if(/password/i.test(t))return 'Password rejected. Lock and unlock again.';
+ if(s===404||/PGRST202|could not find the function/i.test(t))return 'Not set up yet: the Supabase function '+fn+' was not found. Run the directory setup SQL first.';
+ if(/PGRST205|relation .* does not exist|fan_directory/i.test(t)&&s>=400)return 'The fan_directory table has a problem ('+s+'). Check the Supabase setup.';
+ return 'Could not save ('+(s||'no connection')+'). '+(t&&t.length<160?t:'')}
 function openForm(d){editId=d&&d._id||null;$('d-ft').textContent=editId?'Edit entry':'Add an entry';dsel.value=d?d.cat:CATS[0][0];$('d-name').value=d&&d.name||'';$('d-un').value=d&&d.username||'';$('d-pf').value=d&&d.platform||'';$('d-link').value=d&&d.link||'';$('d-ct').value=d&&d.contact||'';$('d-desc').value=d&&d.desc||'';dm.textContent='';$('dform').hidden=false;$('d-name').focus();$('dform').scrollIntoView({behavior:'smooth',block:'center'})}
 function closeForm(){$('dform').hidden=true;editId=null}
 $('d-new').onclick=function(){openForm(null)};$('d-cancel').onclick=closeForm;
@@ -858,8 +869,10 @@ $('d-save').onclick=function(){
  var e={category:dsel.value,name:fv('d-name'),username:fv('d-un'),platform:fv('d-pf'),link:link,contact:fv('d-ct'),description:fv('d-desc')};
  dm.textContent='Saving…';
  var p=editId?rpc('directory_update',{p_artist:ARTIST,p_password:adminPw,p_id:editId,p_entry:e}):rpc('directory_add',{p_artist:ARTIST,p_password:adminPw,p_entry:e});
- p.then(function(){dm.textContent='Saved.';closeForm();load()}).catch(function(x){var t=JSON.stringify(x&&x.body||'');dm.textContent=/password/i.test(t)?'Password rejected. Lock and unlock again.':'Could not save.'})};
-window.waDir={setEdit:function(pw){adminPw=pw;canEdit=!!pw;$('dadmin').hidden=!pw;if(!pw)closeForm();render()}};
+ p.then(function(){dm.textContent='Saved.';closeForm();load()}).catch(function(x){dm.textContent=errMsg(x,editId?'directory_update':'directory_add')})};
+window.waDir={setEdit:function(pw){adminPw=pw;canEdit=!!pw;$('dadmin').hidden=!pw;$('d-unlock').hidden=!!pw;if(!pw)closeForm();render();if(pw&&window.__dirOnly)$('dadmin').scrollIntoView({behavior:'smooth',block:'center'})}};
+$('d-unlock').onclick=function(){window.__dirOnly=true;$('lk').hidden=false;$('lk-pw').focus()};
+$('d-lock').onclick=function(){window.__dirOnly=false;if(window.waLock)waLock();else waDir.setEdit(null)};
 render();load();
 })();
 </script><div id="pc" hidden><div class="pcb" role="dialog" aria-label="Photo"><b>Photo</b><div id="pcf" class="ph has"></div><p class="pch">Drag the picture to move it. Use Zoom to resize.</p><div class="pcr"><label><input type="checkbox" id="pc-sb"> Allow fans to use this photo in the Scrapbook and WILLaughers meme generator (only if licensed or permitted)</label></div><div class="pcr"><label style="flex:1">Credit / permission note<input type="text" id="pc-cr" maxlength="80" placeholder="e.g. Photo: Name, used with permission"></label></div><div class="pcr"><label>Zoom<input type="range" id="pc-z" min="100" max="300" value="100"></label><button id="pc-fit" type="button">Fill frame</button></div><div class="pcr"><button id="pc-pick" type="button">Choose photo</button><button id="pc-del" type="button">Remove</button><button id="pc-ok" type="button" class="go">Save</button><button id="pc-x" type="button">Cancel</button></div></div></div>
@@ -884,7 +897,7 @@ render();load();
 <label>How it was verified<input id="iw-vn" maxlength="100" placeholder="e.g. Confirmed in the organizers' public post"></label></div>
 <div class="pcr"><button id="iw-ok" type="button" class="go">Save</button><button id="iw-del" type="button">Delete</button><button id="iw-x" type="button">Cancel</button><span id="iw-m" role="status"></span></div></div></div>
 <button id="ebtn" type="button">&#127912; Customize</button>
-<div id="lk" hidden><div class="lkb" role="dialog" aria-label="Editing locked"><b>Editing is locked</b><p>Enter the password to customize this page.</p><input type="password" id="lk-pw" autocomplete="off" placeholder="Password"><button id="lk-go" type="button">Unlock</button> <button id="lk-x" type="button">Cancel</button><div id="lk-m" role="status"></div></div></div>
+<div id="lk" hidden><div class="lkb" role="dialog" aria-label="Editing locked"><b>Editing is locked</b><p>Enter the password to edit this page.</p><input type="password" id="lk-pw" autocomplete="off" placeholder="Password"><button id="lk-go" type="button">Unlock</button> <button id="lk-x" type="button">Cancel</button><div id="lk-m" role="status"></div></div></div>
 <div id="ep" role="dialog" aria-label="Customize page">
 <div class="r"><b>Customize</b><button id="ep-done" type="button">Done</button><button id="ep-reset" type="button">Reset all</button><button id="ep-lock" type="button">Lock</button><span id="ep-msg" role="status"></span></div>
 <details open><summary>Fonts &amp; size</summary><div class="r">
@@ -904,6 +917,7 @@ render();load();
 <label class="t">or image URL<input type="text" id="c-bgu" placeholder="https://"></label>
 <label class="t">Dim <input type="range" id="c-dim" min="0" max="85" value="45"></label>
 <button id="c-bgx" type="button">Remove</button></div></details>
+<details><summary>Picture storage</summary><div class="r"><button id="c-mv" type="button">Move my pictures to Supabase Storage</button><span id="c-mvm" role="status"></span></div><p style="margin:4px 0;color:#a595b8">New pictures upload to storage automatically. Use this once to move the ones already saved inside the page settings. This makes the page lighter and removes the size limit.</p></details>
 <details><summary>Pictures &amp; text</summary><div class="r"><label><input type="checkbox" id="c-txt"> Edit text (tap any text on the page)</label></div>
 <p style="margin:4px 0;color:#a595b8">While this panel is open, tap any picture on the page to replace it. Tap a dashed “+ Add photo” frame (hero, featured, film posters) to add, move, zoom and fit a picture. Tap × on an award or news entry to hide it (↩ to bring it back).</p></details>
 <details><summary>Sections</summary><div class="r" id="c-secs"></div></details>
@@ -932,10 +946,16 @@ function apply(){
  applyBg();
  document.querySelectorAll('section[id]').forEach(function(s){s.style.display=S.hide.indexOf(s.id)>-1?'none':''});
 }
-function inPanel(n){return n.closest&&n.closest('#ep,#ebtn,#lk,#pc,#mbm,.ph')}
+function inPanel(n){return n.closest&&n.closest('#ep,#ebtn,#lk,#pc,#mbm,#fppend,.ph')}
 function pics(){return Array.prototype.filter.call(document.images,function(i){return!inPanel(i)})}
-function leaves(){return Array.prototype.filter.call(document.querySelectorAll('h1,h2,h3,h4,p,figcaption,blockquote,li,b,time,small,em,u'),function(e){return!e.children.length&&!e.closest('#ep,#lk,#pc,#dlist,#dchips,#cpend,#lpend,#lfeat,#mbs,#mbf,#mbm,.cc,.gi,.lc,.mc,nav,.dent')})}
+function leaves(){return Array.prototype.filter.call(document.querySelectorAll('h1,h2,h3,h4,p,figcaption,blockquote,li,b,time,small,em,u'),function(e){return!e.children.length&&!e.closest('#ep,#lk,#pc,#fppend,#dlist,#dchips,#cpend,#lpend,#lfeat,#mbs,#mbf,#mbm,.cc,.gi,.lc,.mc,nav,.dent')})}
 function shrink(file,max,q,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',q))};im.onerror=function(){msg.textContent='Could not read that image.'};im.src=r.result};r.readAsDataURL(file)}
+var BUCKET='will-ashley-photos',PUBP=SB+'/storage/v1/object/public/'+BUCKET+'/',FP=[];
+function uid(){return(window.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2,10)}
+function dataBlob(d){var m=/^data:([^;]+);base64,(.*)$/.exec(d);if(!m)return null;var b=atob(m[2]),a=new Uint8Array(b.length);for(var i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return new Blob([a],{type:m[1]})}
+function upImg(d,folder){var bl=typeof d==='string'?dataBlob(d):d;if(!bl)return Promise.reject(0);var ext=bl.type==='image/png'?'png':bl.type==='image/webp'?'webp':'jpg',path=folder+'/'+uid()+'.'+ext;
+ return fetch(SB+'/storage/v1/object/'+BUCKET+'/'+path,{method:'POST',headers:{apikey:AK,Authorization:'Bearer '+AK,'Content-Type':bl.type,'x-upsert':'false','cache-control':'max-age=31536000'},body:bl}).then(function(r){if(!r.ok)throw r.status;return PUBP+path})}
+function shrinkU(file,max,q,folder,cb){shrink(file,max,q,function(d){upImg(d,folder).then(cb).catch(function(){msg.textContent='Could not upload to storage, so the picture was kept inside the page settings instead.';cb(d)})})}
 leaves().forEach(function(e){e.dataset.o=e.textContent.trim()});
 var origSrc=pics().map(function(i){return i.getAttribute('src')});
 function applyAll(){
@@ -960,7 +980,7 @@ function sync(){
 }
 $('c-fs').oninput=function(){S.fs=+this.value;$('c-fsv').textContent=this.value;apply();save()};
 ['rose','rose2','text','ink','ink2'].forEach(function(k){$('c-'+k).oninput=function(){S[k]=this.value;apply();save()}});
-$('c-bgf').onchange=function(){var f=this.files[0];if(!f)return;shrink(f,1400,.7,function(d){S.bg={src:d,dim:+$('c-dim').value};apply();save()})};
+$('c-bgf').onchange=function(){var f=this.files[0];if(!f)return;shrinkU(f,1400,.7,'admin',function(d){S.bg={src:d,dim:+$('c-dim').value};apply();save()})};
 $('c-bgu').onchange=function(){var u=safeUrl(this.value.trim());if(u){S.bg={src:u,dim:+$('c-dim').value};apply();save()}else msg.textContent='The link must start with https://'};
 $('c-dim').oninput=function(){if(S.bg){S.bg.dim=+this.value;apply();save()}};
 $('c-bgx').onclick=function(){delete S.bg;apply();save()};
@@ -968,16 +988,26 @@ document.querySelectorAll('section[id]').forEach(function(s){var h=s.querySelect
 document.addEventListener('input',function(e){var t=e.target;if(t.dataset&&t.dataset.o!=null&&t.isContentEditable){S.txt[t.dataset.o]=t.textContent;save()}});
 $('c-txt').onchange=function(){var on=this.checked;leaves().forEach(function(e){if(on)e.setAttribute('contenteditable','true');else e.removeAttribute('contenteditable')})};
 var pick=document.createElement('input');pick.type='file';pick.accept='image/*';var target=-1,targetEl=null;
-pick.onchange=function(){var f=pick.files[0];if(!f||!targetEl)return;shrink(f,800,.75,function(d){targetEl.removeAttribute('srcset');targetEl.src=d;S.imgs[target]=d;save()});pick.value=''};
+pick.onchange=function(){var f=pick.files[0];if(!f||!targetEl)return;shrinkU(f,800,.75,'admin',function(d){targetEl.removeAttribute('srcset');targetEl.src=d;S.imgs[target]=d;save()});pick.value=''};
 document.addEventListener('click',function(e){var im=e.target;if(!document.body.classList.contains('ed')||!im||im.tagName!=='IMG'||inPanel(im))return;e.preventDefault();e.stopPropagation();target=pics().indexOf(im);targetEl=im;pick.click()},true);
 /* password (checked on the server) */
 function openPanel(){sync();document.body.classList.add('ed')}
 function tryUnlock(){var pw=$('lk-pw').value;if(!pw)return;$('lk-m').textContent='Checking…';
- rpc('check_site_password',{p_artist:ART,p_password:pw}).then(function(ok){if(ok===true){PW=pw;window.waDir&&waDir.setEdit(PW);$('lk').hidden=true;$('lk-pw').value='';$('lk-m').textContent='';openPanel()}else $('lk-m').textContent='Wrong password.'}).catch(function(){$('lk-m').textContent='Could not check the password.'})}
-$('ebtn').onclick=function(){if(PW)openPanel();else{$('lk').hidden=false;$('lk-pw').focus()}};
+ rpc('check_site_password',{p_artist:ART,p_password:pw}).then(function(ok){if(ok===true){PW=pw;window.waDir&&waDir.setEdit(PW);$('lk').hidden=true;$('lk-pw').value='';$('lk-m').textContent='';if(window.__dirOnly)window.__dirOnly=false;else openPanel()}else $('lk-m').textContent='Wrong password.'}).catch(function(){$('lk-m').textContent='Could not check the password.'})}
+$('ebtn').onclick=function(){window.__dirOnly=false;if(PW)openPanel();else{$('lk').hidden=false;$('lk-pw').focus()}};
 $('lk-go').onclick=tryUnlock;$('lk-x').onclick=function(){$('lk').hidden=true;$('lk-pw').value='';$('lk-m').textContent=''};
 $('lk-pw').onkeydown=function(e){if(e.key==='Enter')tryUnlock()};
 $('ep-done').onclick=function(){document.body.classList.remove('ed');$('c-txt').checked=false;$('c-txt').onchange()};
+window.waLock=function(){PW=null;window.waDir&&waDir.setEdit(null)};
+
+$('c-mv').onclick=function(){if(!PW)return;var out=$('c-mvm'),btn=this,jobs=[];
+ function add(o,k){if(o&&typeof o[k]==='string'&&/^data:image\//.test(o[k]))jobs.push([o,k])}
+ Object.keys(S.ph||{}).forEach(function(k){add(S.ph[k],'src')});add(S.bg,'src');Object.keys(S.imgs||{}).forEach(function(k){add(S.imgs,k)});
+ if(!jobs.length){out.textContent='Everything is already in storage.';return}
+ var i=0,fail=0;btn.disabled=true;
+ (function next(){if(i>=jobs.length){btn.disabled=false;applyAll();save();out.textContent='Moved '+(jobs.length-fail)+' of '+jobs.length+(fail?' ('+fail+' failed, tap again to retry)':'. Saved for everyone.');return}
+  var j=jobs[i++];out.textContent='Moving '+i+' of '+jobs.length+'\u2026';
+  upImg(j[0][j[1]],'admin').then(function(u){j[0][j[1]]=u}).catch(function(){fail++}).then(next)})()};
 $('ep-lock').onclick=function(){PW=null;window.waDir&&waDir.setEdit(null);$('ep-done').onclick()};
 $('ep-reset').onclick=function(){var b=this;if(b.dataset.c){S={imgs:{},txt:{},hide:[]};root.removeAttribute('style');applyAll();sync();save();delete b.dataset.c;b.textContent='Reset all'}else{b.dataset.c='1';b.textContent='Tap again to confirm';setTimeout(function(){delete b.dataset.c;b.textContent='Reset all'},4000)}};
 /* photo frames, entry hiding */
@@ -1008,7 +1038,7 @@ function openPc(el){
  pz.value=draft.z||100;$('pc-sb').checked=!!draft.sb;$('pc-cr').value=draft.cr||'';pfit.textContent=draft.fit?'Fit whole photo':'Fill frame';
  renderPh(pcf,draft);pc.hidden=false;if(!draft.src)pp.click()}
 document.addEventListener('click',function(e){if(!document.body.classList.contains('ed'))return;var f=e.target.closest&&e.target.closest('.ph[data-id]');if(!f)return;e.preventDefault();e.stopPropagation();openPc(f)},true);
-pp.onchange=function(){var f=pp.files[0];if(!f||!draft)return;shrink(f,cur&&cur.dataset.id==='hero'?1200:800,.74,function(d){draft.src=d;draft.x=50;draft.y=50;draft.z=100;draft.fit=false;pz.value=100;pfit.textContent='Fill frame';renderPh(pcf,draft)});pp.value=''};
+pp.onchange=function(){var f=pp.files[0];if(!f||!draft)return;shrinkU(f,cur&&cur.dataset.id==='hero'?1200:800,.74,'admin',function(d){draft.src=d;draft.x=50;draft.y=50;draft.z=100;draft.fit=false;pz.value=100;pfit.textContent='Fill frame';renderPh(pcf,draft)});pp.value=''};
 pz.oninput=function(){if(draft){draft.z=+pz.value;renderPh(pcf,draft)}};
 pfit.onclick=function(){if(!draft)return;draft.fit=!draft.fit;pfit.textContent=draft.fit?'Fit whole photo':'Fill frame';renderPh(pcf,draft)};
 pcf.onpointerdown=function(e){if(!draft||!draft.src)return;drag={x:e.clientX,y:e.clientY,ox:draft.x==null?50:draft.x,oy:draft.y==null?50:draft.y};pcf.setPointerCapture(e.pointerId);e.preventDefault()};
@@ -1043,9 +1073,16 @@ function clipInfo(u){
  if(host==='facebook.com'||host==='fb.watch')return{p:'Facebook',embed:'https://www.facebook.com/plugins/video.php?show_text=false&href='+encodeURIComponent(u)};
  return{p:host}}
 function mk(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function hostOf(u){try{return new URL(u).hostname}catch(e){return''}}
+function clipResolve(u,cb){var k='wa_cr_'+u;try{var s=JSON.parse(localStorage.getItem(k)||'null');if(s&&s.url&&Date.now()-s.t<10800000){cb(s);return}}catch(e){}
+ fetch(SB+'/functions/v1/clip-resolve',{method:'POST',headers:{'Content-Type':'application/json',apikey:AK},body:JSON.stringify({url:u})}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){if(!j||!j.url)return;j.t=Date.now();try{localStorage.setItem(k,JSON.stringify(j))}catch(e){}cb(j)}).catch(function(){})}
 function clipCard(c){
  var info=clipInfo(c.url);if(!info)return null;
- var a=mk('article','cc'),v;
+ var a=mk('article','cc');clipFill(a,c,info);
+ if(!info.embed&&/(^|\.)tiktok\.com$/i.test(hostOf(c.url)))clipResolve(c.url,function(r){var i2=clipInfo(r.url);if(!i2||!i2.embed)return;if(r.thumb&&/^https:\/\/[^"')\s]+$/.test(r.thumb))i2.thumb=r.thumb;a.textContent='';clipFill(a,c,i2)});
+ return a}
+function clipFill(a,c,info){
+ var v;
  if(info.embed){
   v=mk('button','cv'+(info.tall?' tall':''));v.type='button';
   if(info.thumb)v.style.backgroundImage='url("'+info.thumb+'")';
@@ -1321,7 +1358,7 @@ opt($('sb-fr'),FRS);opt($('sb-font'),SBF.map(function(f){return[f[1],f[0]]}));op
 function rp(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
 function cover(c,im,x,y,w,h){var ar=w/h,ir=im.naturalWidth/im.naturalHeight,sw=im.naturalWidth,sh=im.naturalHeight,a=0,b=0;if(ir>ar){sw=sh*ar;a=(im.naturalWidth-sw)/2}else{sh=sw/ar;b=(im.naturalHeight-sh)/2}c.drawImage(im,a,b,sw,sh,x,y,w,h)}
 function tape(c,x,y,w,h,deg){c.save();c.translate(x,y);c.rotate(deg*Math.PI/180);c.fillStyle='rgba(235,220,160,.82)';c.fillRect(-w/2,-h/2,w,h);c.restore()}
-function getImg(src,cb){var i=IM[src];if(i){if(i.complete&&i.naturalWidth){cb&&cb(i)}return i}i=new Image();i.onload=function(){cb&&cb(i);rd()};i.src=src;IM[src]=i;return i}
+function getImg(src,cb){var i=IM[src];if(i){if(i.complete&&i.naturalWidth){cb&&cb(i)}return i}i=new Image();if(/^https?:/i.test(src))i.crossOrigin='anonymous';i.onload=function(){cb&&cb(i);rd()};i.src=src;IM[src]=i;return i}
 function tfont(it){return(it.f==='Cormorant Garamond'?'italic 600 ':'')+Math.round(64*it.s)+'px "'+it.f+'", serif'}
 function dims(it){
  var w,h,p,z;
@@ -1369,9 +1406,10 @@ function rd(){render(true)}
 function jit(){return Math.round((Math.random()-.5)*220)}
 function push(it){SBK.items.push(it);SBK.sel=SBK.items.length-1;rd();syncSel()}
 function addPhoto(src,cr){getImg(src,function(im){var k=440/Math.max(im.naturalWidth,im.naturalHeight);push({t:'p',src:src,cr:cr||'',bw:im.naturalWidth*k,bh:im.naturalHeight*k,fr:'polaroid',cap:'',x:SBK.w/2+jit(),y:SBK.h/2+jit(),s:1,r:Math.round(jit()/18)})})}
+function libItems(){var o=[];Object.keys(S.ph||{}).forEach(function(k){var d=S.ph[k];if(d&&d.sb&&/^(data:image\/|https:\/\/)/.test(d.src||''))o.push({src:d.src,cr:d.cr||''})});FP.forEach(function(f){o.push({src:f.url,cr:f.credit?'Shared by '+f.credit:'Shared by a WILLiever'})});return o}
 function buildLib(){
  var l=$('sb-lib');l.textContent='';var n=0;
- Object.keys(S.ph||{}).forEach(function(k){var d=S.ph[k];if(!d||!d.sb||!/^data:image\//.test(d.src||''))return;n++;
+ libItems().forEach(function(d){n++;
   var b=mk('button','sbth');b.type='button';b.style.backgroundImage='url("'+d.src+'")';b.setAttribute('aria-label','Add this photo to the scrapbook');b.onclick=function(){addPhoto(d.src,d.cr||'')};l.appendChild(b)});
  $('sb-nolib').style.display=n?'none':''}
 function hit(px,py){for(var i=SBK.items.length-1;i>=0;i--){var it=SBK.items[i],d=dims(it),dx=px-it.x,dy=py-it.y,a=-it.r*Math.PI/180,lx=dx*Math.cos(a)-dy*Math.sin(a),ly=dx*Math.sin(a)+dy*Math.cos(a);if(Math.abs(lx)<=d.ow/2&&Math.abs(ly)<=d.oh/2)return i}return-1}
@@ -1402,7 +1440,7 @@ $('sb-addt').onclick=function(){var f=$('sb-font').value;loadF(f);push({t:'x',tx
 BGS.forEach(function(b,n){var s=mk('button','sbsw');s.type='button';s.style.background=b.c;s.setAttribute('aria-label','Background '+(n+1));s.setAttribute('aria-pressed',String(n===0));
  s.onclick=function(){SBK.bg=n;[].forEach.call($('sb-bg').children,function(x,j){x.setAttribute('aria-pressed',String(j===n))});rd()};$('sb-bg').appendChild(s)});
 $('sb-size').onchange=function(){var v=this.value.split('x');SBK.w=+v[0];SBK.h=+v[1];sbc.width=SBK.w;sbc.height=SBK.h;SBK.items.forEach(function(i){i.x=Math.min(i.x,SBK.w);i.y=Math.min(i.y,SBK.h)});rd()};
-$('sb-up').onchange=function(){var f=this.files[0];this.value='';if(!f)return;shrink(f,1000,.85,function(d){addPhoto(d,'')})};
+$('sb-up').onchange=function(){var f=this.files[0];this.value='';if(!f)return;shrink(f,1000,.85,function(d){addPhoto(d,'');fpShare(d,'sb')})};
 [].forEach.call(document.querySelectorAll('.sbtabs button'),function(b){b.onclick=function(){[].forEach.call(document.querySelectorAll('.sbtabs button'),function(x){x.setAttribute('aria-pressed',String(x===b))});[].forEach.call(document.querySelectorAll('.sbp'),function(p){p.hidden=p.dataset.p!==b.dataset.p})}});
 function snap(cb){render(false);sbc.toBlob(function(b){rd();cb(b)},'image/png')}
 $('sb-save').onclick=function(){snap(function(b){if(!b){sm.textContent='Could not create the image.';return}var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='will-scrapbook.png';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},800);sm.textContent='Saved! Check your downloads or photos.'})};
@@ -1600,10 +1638,10 @@ function mmr(){
  if(g)c.drawImage(MM.img,g.x,g.y,g.w,g.h);
  else{c.save();c.fillStyle='rgba(255,255,255,.7)';c.font='46px "Caveat",cursive';c.textAlign='center';c.textBaseline='middle';c.fillText('Choose a photo to start',MM.w/2,MM.h/2);c.restore()}
  mmBlock(c,MM.top,true);mmBlock(c,MM.bot,false);mmFoot(c)}
-function mmSet(src,cr,fr){var im=new Image();im.onload=function(){MM.img=im;MM.frames=fr||null;MM.src=src;MM.cr=cr||'';MM.zoom=100;MM.ox=0;MM.oy=0;$('mm-z').value=100;mmr()};im.onerror=function(){mmsm.textContent='Could not load that photo.'};im.src=src}
+function mmSet(src,cr,fr){var im=new Image();if(/^https?:/i.test(src))im.crossOrigin='anonymous';im.onload=function(){MM.img=im;MM.frames=fr||null;MM.src=src;MM.cr=cr||'';MM.zoom=100;MM.ox=0;MM.oy=0;$('mm-z').value=100;mmr()};im.onerror=function(){mmsm.textContent='Could not load that photo.'};im.src=src}
 function buildMLib(){
  if(!MM)return;var l=$('mm-lib');if(!l)return;l.textContent='';var n=0,first=null;
- Object.keys(S.ph||{}).forEach(function(k){var d=S.ph[k];if(!d||!d.sb||!/^data:image\//.test(d.src||''))return;n++;if(!first)first=d;
+ libItems().forEach(function(d){n++;if(!first)first=d;
   var b=mk('button','sbth');b.type='button';b.style.backgroundImage='url("'+d.src+'")';b.setAttribute('aria-label','Use this photo for your meme');b.onclick=function(){mmSet(d.src,d.cr||'')};l.appendChild(b)});
  $('mm-nolib').style.display=n?'none':'';
  if(first&&!MM.img)mmSet(first.src,first.cr||'')}
@@ -1617,7 +1655,25 @@ $('mm-sz').oninput=function(){MM.sz=+this.value;mmr()};
 $('mm-z').oninput=function(){MM.zoom=+this.value;mmr()};
 $('mm-size').onchange=function(){var v=this.value.split('x');MM.w=+v[0];MM.h=+v[1];mmc.width=MM.w;mmc.height=MM.h;mmr()};
 $('mm-up').onchange=function(){var f=this.files[0];this.value='';if(!f)return;
- mmGifLoad(f,function(fr){if(fr){mmSet(fr[0].c.toDataURL('image/jpeg',.9),'',fr);mmsm.textContent='Animated GIF loaded. Your captions will be added to every frame.'}else shrink(f,1400,.85,function(d){mmSet(d,'')})})};
+ mmGifLoad(f,function(fr){if(fr){mmSet(fr[0].c.toDataURL('image/jpeg',.9),'',fr);mmsm.textContent='Animated GIF loaded. Your captions will be added to every frame.'}else shrink(f,1400,.85,function(d){mmSet(d,'');fpShare(d,'mm')})})};
+var fpLast=0;
+function fpShare(d,pre){var ck=$(pre+'-fpk'),m=$(pre+'-fpm');if(!ck||!ck.checked)return;
+ if(Date.now()-fpLast<15000){m.textContent='Please wait a few seconds before sharing another photo.';return}
+ fpLast=Date.now();m.textContent='Sharing\u2026';
+ upImg(d,'fans').then(function(u){return rpc('fan_photo_submit',{p_artist:ART,p_url:u,p_credit:$(pre+'-fpc').value.trim()})}).then(function(){ck.checked=false;m.textContent='Thank you! Your photo will appear in the library after it is reviewed.'}).catch(function(e){m.textContent=e&&e.status===404?'Sharing is not available yet.':'Could not share the photo. It is still on your screen. Please try again later.'})}
+function loadFP(){fetch(SB+'/rest/v1/fan_photos?select=id,url,credit&artist=eq.'+ART+'&status=eq.approved&order=created_at.desc&limit=60',{headers:H}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(rows){FP=rows.filter(function(r){return r.url&&r.url.indexOf(PUBP+'fans/')===0});buildLib();buildMLib();if(PW)loadFPPending()}).catch(function(){})}
+function fpCard(r,btns){var c=mk('div','fpc'),im=document.createElement('img');im.src=r.url;im.alt='Fan photo';im.loading='lazy';c.appendChild(im);c.appendChild(mk('small',null,r.credit?'Credit: '+r.credit:'No credit'));btns.forEach(function(b){c.appendChild(b)});return c}
+function fpBtn(cls,label,id,act){var b=mk('button',cls,label);b.type='button';b.onclick=function(){fpReview(id,act)};return b}
+function loadFPPending(){var box=$('fppend');if(!box)return;if(!PW){box.textContent='';return}
+ rpc('fan_photo_pending',{p_artist:ART,p_password:PW}).then(function(rows){box.textContent='';
+  box.appendChild(mk('h3',null,'Fan photos waiting for review ('+rows.length+')'));
+  var g=mk('div','fpg');rows.forEach(function(r){g.appendChild(fpCard(r,[fpBtn('dadd','Approve',r.id,'approve'),fpBtn('ddel','Reject',r.id,'reject')]))});box.appendChild(g);
+  if(FP.length){box.appendChild(mk('h3',null,'Shared fan photos in the library ('+FP.length+')'));var g2=mk('div','fpg');FP.forEach(function(r){g2.appendChild(fpCard(r,[fpBtn('ddel','Remove',r.id,'delete')]))});box.appendChild(g2)}
+ }).catch(function(){box.textContent='Could not load fan photos for review.'})}
+function fpReview(id,a){rpc('fan_photo_review',{p_artist:ART,p_password:PW,p_id:id,p_action:a}).then(function(){loadFP();loadFPPending()}).catch(function(){$('fppend').textContent='Could not update that photo.'})}
+if(window.waDir){var _se=waDir.setEdit;waDir.setEdit=function(pw){_se(pw);loadFPPending()}}
+loadFP();
+
 function mmLoad(){if(!(document.fonts&&document.fonts.load))return;MMF.forEach(function(f){document.fonts.load(f[2]+' 40px "'+f[1]+'"').then(mmr,mmr)})}
 mmc.onpointerdown=function(e){if(!MM.img)return;var r=mmc.getBoundingClientRect();mmdrag={x:e.clientX,y:e.clientY,ox:MM.ox,oy:MM.oy,k:MM.w/r.width};mmc.setPointerCapture(e.pointerId);mmc.style.cursor='grabbing';e.preventDefault()};
 mmc.onpointermove=function(e){if(!mmdrag)return;MM.ox=mmdrag.ox+(e.clientX-mmdrag.x)*mmdrag.k;MM.oy=mmdrag.oy+(e.clientY-mmdrag.y)*mmdrag.k;mmr()};
