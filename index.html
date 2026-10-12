@@ -475,7 +475,7 @@ label.fcn1{cursor:pointer}label.fcn1:hover,.fcn1.mine{border-color:var(--rose)}
 .iwc[data-cat=project]{border-left-color:#e0306f}.iwc[data-cat=celebration]{border-left-color:#e6c48a}.iwc[data-cat=creative]{border-left-color:#b57bff}.iwc[data-cat=milestone]{border-left-color:#1fd8b0}
 .iwv{display:inline-block;font:600 12px var(--sans);padding:3px 10px;border-radius:99px;background:#1fd8b0;color:#06231c}
 /* music hub */
-#mhm{position:fixed;inset:0;z-index:125;background:#000c;display:flex;align-items:center;justify-content:center;padding:16px}#mhm[hidden]{display:none}
+#mhm{position:fixed;inset:0;z-index:125;background:#000c;display:flex;align-items:center;justify-content:center;padding:16px}#mhm[hidden]{display:none}#mhm .pcb{box-sizing:border-box;width:min(420px,100%);min-width:0}#mhm .mfg{grid-template-columns:minmax(0,1fr)}#mhm .mfg label,#mhm .mfg input,#mhm .mfg select,#mhm .mfg textarea{min-width:0;max-width:100%;box-sizing:border-box}#mhm .mfg input[type=date]{width:100%;-webkit-appearance:none;appearance:none;min-height:38px}
 .mht,.mhf{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.mht{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}.mht::-webkit-scrollbar{display:none}
 .mht button,.mhf button{cursor:pointer;white-space:nowrap;border:1px solid var(--line);background:var(--ink2);color:var(--mute);padding:6px 16px;border-radius:99px;font:600 14px var(--sans)}.mht button{padding:8px 18px;font-size:15px}
 .mht button[aria-pressed=true],.mhf button[aria-pressed=true]{background:var(--rose);border-color:var(--rose);color:#fff}
@@ -1687,7 +1687,7 @@ function mhAdd(par,kind,lab){var b=mk('button','dadd mhadd',lab);b.type='button'
 function mhNone(par,n,ed){if(!n&&!ed)par.appendChild(mk('p','note','Nothing here yet. Check back soon!'))}
 function mhCalCard(m){var n=dleft(m.date),a=mk('article','mc mhc'+(n!==null&&n<0?' past':''));a.dataset.cat=m.type;
  var h=mk('div','mh');h.appendChild(mk('span','mcat',MCT[m.type]||'Activity'));if(n!==null)h.appendChild(mk('span','mdt',fdate(m.date)+' · '+dtxt(n)));a.appendChild(h);
- a.appendChild(mk('h3',null,m.title));if(m.time)a.appendChild(mk('div','mpt','⏰ '+m.time));if(m.desc)mhClamp(a,m.desc);
+ var cim=mhImgEl(m.img,m.title);if(cim)a.appendChild(cim);a.appendChild(mk('h3',null,m.title));if(m.time)a.appendChild(mk('div','mpt','⏰ '+m.time));if(m.desc)mhClamp(a,m.desc);
  var ac=mhLink(a,m.link,m.type==='stationhead'?'Open Stationhead ↗':'Open link ↗');
  if(n!==null&&n>=0){if(!ac){ac=mk('div','ma');a.appendChild(ac)}var c=mk('button',null,'\u{1F4C5} Add to calendar');c.type='button';c.onclick=function(){ics({id:m.id,title:m.title,date:m.date,desc:(m.time?'Time: '+m.time+'\n':'')+(m.desc||''),link:m.link})};ac.appendChild(c)}
  a.appendChild(mhEd(function(){mhOpen('cal',m)},'Edit activity'));return a}
@@ -1702,7 +1702,7 @@ function mhCal(root,d,ed){
  if(list.length)root.appendChild(mhRow(list,function(x){return mhCalCard(x.m)}));mhNone(root,list.length,ed);mhAdd(root,'cal','+ Add activity')}
 function mhLounge(root,d,ed){
  var L=d.lounge;root.appendChild(mk('p','note mhtn',MHN.lounge));var g=mk('div','mhg');
- var c1=mk('article','mc mhc');c1.appendChild(mk('h3',null,'Stationhead Lounge'));
+ var c1=mk('article','mc mhc');var lim=mhImgEl(L.img,'Stationhead Lounge');if(lim)c1.appendChild(lim);c1.appendChild(mk('h3',null,'Stationhead Lounge'));
  if(okLink(L.link)){c1.appendChild(mk('p','md','Tap below to open the lounge and join the listening session.'));var go=mk('a','mhgo','Open the lounge ↗');go.href=L.link;go.target='_blank';go.rel='noopener noreferrer';go.style.alignSelf='flex-start';c1.appendChild(go)}else c1.appendChild(mk('p','md','The lounge link will be posted here soon.'));
  g.appendChild(c1);
  var steps=(L.join||'').split('\n').map(function(x){return x.trim()}).filter(Boolean);
@@ -1713,7 +1713,7 @@ function mhLounge(root,d,ed){
  g.appendChild(c3);
  var c4=mk('article','mc mhc');c4.appendChild(mk('h3',null,'Host announcements'));
  var an=L.ann.slice().sort(function(a,b){return(b.date||'').localeCompare(a.date||'')});
- if(an.length)an.forEach(function(x){var r=mk('div','mhs');if(x.date)r.appendChild(mk('small',null,fdate(x.date)+', '+x.date.slice(0,4)));r.appendChild(mk('p',null,x.text));if(ed){var eb=mk('button','mhcp','Edit');eb.type='button';eb.style.alignSelf='flex-start';eb.onclick=function(){mhOpen('ann',x)};r.appendChild(eb)}c4.appendChild(r)});else c4.appendChild(mk('p','md','No announcements yet.'));
+ if(an.length)an.forEach(function(x){var r=mk('div','mhs');if(x.date)r.appendChild(mk('small',null,fdate(x.date)+', '+x.date.slice(0,4)));r.appendChild(mk('p',null,x.text));var aim=mhImgEl(x.img,'Announcement photo');if(aim)r.appendChild(aim);if(ed){var eb=mk('button','mhcp','Edit');eb.type='button';eb.style.alignSelf='flex-start';eb.onclick=function(){mhOpen('ann',x)};r.appendChild(eb)}c4.appendChild(r)});else c4.appendChild(mk('p','md','No announcements yet.'));
  g.appendChild(c4);root.appendChild(g);
  var b=mk('button','dadd mhadd','Edit lounge link & steps');b.type='button';b.onclick=function(){mhOpen('lounge',L)};root.appendChild(b);mhAdd(root,'ann','+ Add announcement')}
 function mhKitCard(k){var a=mk('article','mc mhc');var h=mk('div','mh');h.appendChild(mk('span','mcat',MKT[k.kind]||'Promo'));a.appendChild(h);a.appendChild(mk('h3',null,k.title));
@@ -1737,11 +1737,11 @@ function renderMH(){var root=$('mh-body');if(!root)return;var d=mhd(),ed=documen
  var any=d.cal.length||d.kit.length||d.arc.length||okLink(d.lounge.link)||d.lounge.join||d.lounge.ann.length;$('music').classList.toggle('empty',!any);
  var t=$('mh-tabs');t.textContent='';Object.keys(MHT).forEach(function(k){var b=mk('button',null,MHT[k]);b.type='button';b.setAttribute('aria-pressed',String(k===mhTab));b.onclick=function(){mhTab=k;renderMH()};t.appendChild(b)});
  root.textContent='';({cal:mhCal,lounge:mhLounge,kit:mhKit,arc:mhArc})[mhTab](root,d,ed)}
-var MSCH={cal:{t:'Activity',f:[['type','Type','sel',MCT],['title','Title','text',90],['date','Date','date'],['time','Time (optional, e.g. 8:00 PM PH time)','text',40],['link','Link (https://)','url'],['desc','Details','area',500]],req:['title','date']},
+var MSCH={cal:{t:'Activity',f:[['type','Type','sel',MCT],['title','Title','text',90],['date','Date','date'],['time','Time (optional, e.g. 8:00 PM PH time)','text',40],['link','Link (https://)','url'],['img','Photo (optional)','img'],['desc','Details','area',500]],req:['title','date']},
  kit:{t:'Promo kit item',f:[['kind','Type','sel',MKT],['title','Title','text',90],['text','Caption, hashtags or guide text','area',1200],['link','Link (https://)','url'],['img','Pubmat picture (optional)','img']],req:['title']},
  arc:{t:'Archive entry',f:[['kind','Type','sel',MAT],['title','Title','text',90],['date','Date','date'],['desc','What happened','area',600],['link','Link (https://)','url'],['img','Picture (optional)','img']],req:['title','date']},
- ann:{t:'Host announcement',f:[['date','Date','date'],['text','Announcement','area',500]],req:['text']},
- lounge:{t:'Stationhead Lounge',f:[['link','Lounge link (https://)','url'],['join','How to join (one step per line)','area',800]],req:[]}};
+ ann:{t:'Host announcement',f:[['date','Date','date'],['text','Announcement','area',500],['img','Photo (optional)','img']],req:['text']},
+ lounge:{t:'Stationhead Lounge',f:[['link','Lounge link (https://)','url'],['join','How to join (one step per line)','area',800],['img','Lounge photo (optional)','img']],req:[]}};
 var mhCur=null,mhImg='';
 function mhPv(){var b=$('mh-pv');if(!b)return;b.textContent='';b.hidden=!mhImg;if(!mhImg)return;var t=mk('div','iwth'),im=mk('img');im.src=mhImg;im.alt='Preview';var x=mk('button',null,'×');x.type='button';x.setAttribute('aria-label','Remove picture');x.onclick=function(){mhImg='';mhPv()};t.appendChild(im);t.appendChild(x);b.appendChild(t)}
 function mhOpen(kind,item){
@@ -1761,7 +1761,7 @@ $('mh-ok').onclick=function(){var kind=mhCur.kind,sc=MSCH[kind],o={},m=$('mh-m')
   if(sc.req.indexOf(df[0])>-1&&!v){m.textContent='Please fill in: '+df[1].replace(/ \(.*$/,'')+'.';return}
   if(df[2]==='url'&&v&&!okLink(v)){m.textContent='The link must start with https://';return}}
  var d=mhd();
- if(kind==='lounge'){d.lounge.link=o.link;d.lounge.join=o.join}
+ if(kind==='lounge'){d.lounge.link=o.link;d.lounge.join=o.join;d.lounge.img=o.img}
  else{var arr=kind==='ann'?d.lounge.ann:d[kind];o.id=mhCur.id||Date.now().toString(36);var done=false;arr.forEach(function(x,k){if(x.id===o.id){arr[k]=o;done=true}});if(!done)arr.push(o)}
  $('mhm').hidden=true;renderMH();save()};
 $('mh-del').onclick=function(){if(!mhCur||!mhCur.id||!confirm('Delete this entry?'))return;var d=mhd(),id=mhCur.id;if(mhCur.kind==='ann')d.lounge.ann=d.lounge.ann.filter(function(x){return x.id!==id});else d[mhCur.kind]=d[mhCur.kind].filter(function(x){return x.id!==id});$('mhm').hidden=true;renderMH();save()};
