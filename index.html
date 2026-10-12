@@ -335,6 +335,7 @@ h2::after{background:linear-gradient(90deg,#5f7aa0,#e6c48a)}
 .lkb #lk-go{background:#ff4f8b;border-color:#ff4f8b;color:#fff}
 #lk-m{margin-top:8px;color:#ffb3cf;min-height:1em}
 #dadmin{margin:10px 0 18px}
+#d-msg{display:block;margin-top:10px;font-weight:600;color:var(--rose2)}
 #d-msg{font-size:14px;color:var(--mute);margin-left:8px}
 /* photo frames + entry hiding */
 .ph{position:relative;overflow:hidden;background:var(--ink2)}
@@ -789,7 +790,7 @@ body.pq-instage .pq-fl,body.ed .pq-fl,body.ed .pq-showb{display:none}
 <button type="button" id="d-unlock" class="dadd">Edit directory</button>
 <div id="dadmin" hidden><button type="button" id="d-new" class="dadd">+ Add entry</button> <button type="button" id="d-lock" class="ddel">Lock editing</button>
 <div id="dform" class="dform" hidden><h3 id="d-ft">Add an entry</h3><p class="note">Please add only public, verified accounts.</p>
-<div class="dfg"><label>Category<select id="d-cat"></select></label><label>Account name<input id="d-name" maxlength="120"></label><label>Username<input id="d-un" maxlength="80" placeholder="@username"></label><label>Platform<input id="d-pf" maxlength="60" placeholder="X, Instagram, Facebook, TikTok, YouTube"></label><label>Link<input id="d-link" maxlength="400" placeholder="https://"></label><label>Contact person (only if public)<input id="d-ct" maxlength="120"></label><label class="wide">Short description and role in the fandom<textarea id="d-desc" rows="2" maxlength="400"></textarea></label></div>
+<div class="dfg"><label>Category<select id="d-cat"></select></label><label>Account name<input id="d-name" maxlength="120"></label><label>Username<input id="d-un" maxlength="80" placeholder="@username"></label><label>Platform<input id="d-pf" maxlength="60" placeholder="X, Instagram, Facebook, TikTok, YouTube"></label><label>Link (tap to open their page)<input id="d-link" maxlength="400" inputmode="url" placeholder="https://instagram.com/yourpage"></label><label>Contact person (only if public)<input id="d-ct" maxlength="120"></label><label class="wide">Short description and role in the fandom<textarea id="d-desc" rows="2" maxlength="400"></textarea></label></div>
 <button type="button" id="d-save" class="dadd">Save entry</button> <button type="button" id="d-cancel" class="ddel">Cancel</button> <span id="d-msg" role="status"></span></div></div>
 <div class="chips" id="dchips" role="group" aria-label="Filter by category"></div>
 <div id="dlist"></div>
@@ -835,11 +836,11 @@ function render(){
   var box=el('div','dcat');box.appendChild(el('h3',null,c[1]));box.appendChild(el('p',null,c[2]));
   if(!items.length){box.appendChild(el('div','dempty','No verified entries in this category yet.'))}
   else{var g=el('div','dgrid');items.forEach(function(d){
-   var a=el('article','dent');a.appendChild(el('h4',null,d.name||''));
+   var a=el('article','dent');var h4=el('h4');if(d.link&&/^https?:\/\//i.test(d.link)){var hl=el('a',null,d.name||'');hl.href=d.link;hl.target='_blank';hl.rel='noopener noreferrer';hl.style.textDecoration='none';h4.appendChild(hl)}else h4.textContent=d.name||'';a.appendChild(h4);
    if(d.username)a.appendChild(el('div','un',d.username));
    if(d.platform)a.appendChild(el('span','pf',d.platform));
    if(d.desc)a.appendChild(el('p',null,d.desc));
-   if(d.link&&/^https?:\/\//i.test(d.link)){var s=el('small'),l=el('a',null,'Visit page →');l.href=d.link;l.target='_blank';l.rel='noopener';s.appendChild(l);a.appendChild(s)}
+   if(d.link&&/^https?:\/\//i.test(d.link)){var s=el('small'),l=el('a',null,'Open '+(d.platform||'page')+' →');l.href=d.link;l.target='_blank';l.rel='noopener noreferrer';s.appendChild(l);a.appendChild(s)}
    if(d.contact)a.appendChild(el('small',null,'Contact: '+d.contact));
    if(canEdit&&d._id){var ed=el('button','ddel','Edit');ed.type='button';ed.onclick=function(){openForm(d)};a.appendChild(ed);var x=el('button','ddel','Remove');x.type='button';x.style.marginLeft='6px';x.onclick=function(){if(x.dataset.c){rpc('directory_delete',{p_artist:ARTIST,p_password:adminPw,p_id:d._id}).then(load).catch(function(e){x.textContent=(e&&e.status===404)?'directory_delete missing in Supabase':'Could not remove'})}else{x.dataset.c='1';x.textContent='Tap again to confirm'}};a.appendChild(x)}
    g.appendChild(a)});box.appendChild(g)}
@@ -855,6 +856,20 @@ function rpc(fn,body){return fetch(SB_URL+'/rest/v1/rpc/'+fn,{method:'POST',head
 var $=function(i){return document.getElementById(i)},dm=$('d-msg'),dsel=$('d-cat');
 CATS.forEach(function(c){var o=document.createElement('option');o.textContent=c[1];o.value=c[0];dsel.appendChild(o)});
 function fv(i){return $(i).value.trim()}
+function dmErr(t){dm.textContent=t;dm.style.color='#ff8fb3';try{dm.scrollIntoView({behavior:'smooth',block:'center'})}catch(e){}}
+function fixLink(l,un,pf){
+ l=(l||'').trim();var u=(un||'').trim().replace(/^@/,'').replace(/\s+/g,''),pl=(pf||'').toLowerCase();
+ if(l&&/^@?[\w.]+$/.test(l)&&l.indexOf('.')<0){u=u||l.replace(/^@/,'');l=''}
+ if(!l){if(!u)return'';
+  if(pl.indexOf('insta')>-1)return'https://www.instagram.com/'+u;
+  if(pl.indexOf('tiktok')>-1)return'https://www.tiktok.com/@'+u;
+  if(pl==='x'||pl.indexOf('twitter')>-1)return'https://x.com/'+u;
+  if(pl.indexOf('face')>-1||pl==='fb')return'https://www.facebook.com/'+u;
+  if(pl.indexOf('youtu')>-1)return'https://www.youtube.com/@'+u;
+  return''}
+ if(/^[a-z][a-z0-9+.-]*:/i.test(l)&&!/^https?:\/\//i.test(l))return false;
+ if(/^\/\//.test(l))l='https:'+l;else if(!/^https?:\/\//i.test(l))l='https://'+l;
+ try{var x=new URL(l);if(x.hostname.indexOf('.')<0)return false;return x.href}catch(e){return false}}
 function errMsg(x,fn){var s=x&&x.status,t=JSON.stringify(x&&x.body||'');
  if(/password/i.test(t))return 'Password rejected. Lock and unlock again.';
  if(s===404||/PGRST202|could not find the function/i.test(t))return 'Not set up yet: the Supabase function '+fn+' was not found. Run the directory setup SQL first.';
@@ -864,12 +879,13 @@ function openForm(d){editId=d&&d._id||null;$('d-ft').textContent=editId?'Edit en
 function closeForm(){$('dform').hidden=true;editId=null}
 $('d-new').onclick=function(){openForm(null)};$('d-cancel').onclick=closeForm;
 $('d-save').onclick=function(){
- var link=fv('d-link');if(!fv('d-name')){dm.textContent='Please enter an account name.';return}
- if(link&&!/^https?:\/\//i.test(link)){dm.textContent='The link must start with http:// or https://';return}
+ if(!fv('d-name')){dmErr('Please enter an account name.');return}
+ var link=fixLink(fv('d-link'),fv('d-un'),fv('d-pf'));if(link===false){dmErr('That link does not look right. Paste the full address of the page, for example https://www.instagram.com/yourpage');return}
+ if(link)$('d-link').value=link;
  var e={category:dsel.value,name:fv('d-name'),username:fv('d-un'),platform:fv('d-pf'),link:link,contact:fv('d-ct'),description:fv('d-desc')};
  dm.textContent='Saving…';
  var p=editId?rpc('directory_update',{p_artist:ARTIST,p_password:adminPw,p_id:editId,p_entry:e}):rpc('directory_add',{p_artist:ARTIST,p_password:adminPw,p_entry:e});
- p.then(function(){dm.textContent='Saved.';closeForm();load()}).catch(function(x){dm.textContent=errMsg(x,editId?'directory_update':'directory_add')})};
+ p.then(function(){dm.style.color='';dm.textContent='Saved.';closeForm();load()}).catch(function(x){dmErr(errMsg(x,editId?'directory_update':'directory_add'))})};
 window.waDir={setEdit:function(pw){adminPw=pw;canEdit=!!pw;$('dadmin').hidden=!pw;$('d-unlock').hidden=!!pw;if(!pw)closeForm();render();if(pw&&window.__dirOnly)$('dadmin').scrollIntoView({behavior:'smooth',block:'center'})}};
 $('d-unlock').onclick=function(){window.__dirOnly=true;$('lk').hidden=false;$('lk-pw').focus()};
 $('d-lock').onclick=function(){window.__dirOnly=false;if(window.waLock)waLock();else waDir.setEdit(null)};
