@@ -375,7 +375,7 @@ body.ed .rmx{display:block}
 .cc{position:relative;background:var(--ink2);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .cv{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;background:#0d1118 center/cover;color:#fff;cursor:pointer;text-decoration:none}
 .cv.tall{aspect-ratio:9/16}.cv iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.cv .pl{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:10px;font:600 15px var(--sans);background:linear-gradient(135deg,#131b29b0,#26365ab0)}
+.cv .pl::before{content:'\25b6';display:grid;place-items:center;width:54px;height:54px;margin:0 auto 8px;border-radius:50%;background:#ff4f8bd9;font-size:20px;padding-left:4px;box-shadow:0 4px 14px #0007}.cv .pl{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:10px;font:600 15px var(--sans);background:linear-gradient(135deg,#131b29b0,#26365ab0)}
 .cm{padding:12px 14px}.cm b{display:block;font:500 19px/1.25 var(--serif)}.cm small{display:block;color:var(--mute);margin-top:2px}.cm a{display:inline-block;margin-top:6px;color:var(--rose2);font-size:14px}
 #cpend{display:none;margin:0 0 26px;padding:14px;border:1px dashed var(--rose);border-radius:14px}body.ed #cpend{display:block}
 #cpend h3{font:500 22px var(--serif);margin-bottom:10px}
@@ -474,7 +474,7 @@ label.fcn1{cursor:pointer}label.fcn1:hover,.fcn1.mine{border-color:var(--rose)}
 .iwy{font:400 24px var(--serif);color:var(--rose2);margin:26px 0 12px}
 .iwc[data-cat=project]{border-left-color:#e0306f}.iwc[data-cat=celebration]{border-left-color:#e6c48a}.iwc[data-cat=creative]{border-left-color:#b57bff}.iwc[data-cat=milestone]{border-left-color:#1fd8b0}
 .iwv{display:inline-block;font:600 12px var(--sans);padding:3px 10px;border-radius:99px;background:#1fd8b0;color:#06231c}
-#iw-s{margin:0 0 22px}.iwimg{display:block;width:100%;max-height:340px;object-fit:cover;border-radius:10px;cursor:zoom-in;background:#0d1118}.iwvid{border-radius:10px;overflow:hidden}#iw-pv{display:flex;align-items:center;gap:10px}#iw-pi{width:84px;height:84px;object-fit:cover;border-radius:8px}
+#iw-s{margin:0 0 22px}.iwimg{display:block;width:100%;height:auto;max-height:min(72vh,560px);object-fit:contain;border-radius:10px;cursor:zoom-in;background:#0d1118}.iwvid{border-radius:10px;overflow:hidden}#iw-pv,#iw-vv{display:flex;align-items:center;gap:10px}#iw-pi,#iw-vi{width:84px;height:84px;object-fit:cover;border-radius:8px}
 #fc-add{display:none;margin-top:16px}body.ed #fc-add{display:inline-block}#iw-add{display:inline-block;margin-top:16px}#iw-list .rmx{display:block}#d-unlock{display:none!important}
 #fcm,#iwm{position:fixed;inset:0;z-index:125;background:#000c;display:flex;align-items:center;justify-content:center;padding:16px}#fcm[hidden],#iwm[hidden]{display:none}
 .mfg label.chk{flex-direction:row;align-items:center;gap:8px}
@@ -922,6 +922,8 @@ render();load();
 <label>What the fandom did<textarea id="iw-d" rows="4" maxlength="600"></textarea></label>
 <label>Picture (optional)<input type="file" id="iw-pf" accept="image/*"></label>
 <div id="iw-pv" hidden><img id="iw-pi" alt="Picture preview"><button type="button" id="iw-pr">Remove picture</button></div>
+<label>Video preview picture (optional; automatic for YouTube, TikTok and X)<input type="file" id="iw-vf" accept="image/*"></label>
+<div id="iw-vv" hidden><img id="iw-vi" alt="Video preview"><button type="button" id="iw-vr">Remove preview</button></div>
 <label>Video link (optional; YouTube, TikTok, Instagram, Facebook or other https:// link)<input id="iw-vl" maxlength="400" inputmode="url" placeholder="https://"></label>
 <label>Date (when it was completed or held)<input id="iw-dt" type="date"></label>
 <label>Credited to (a group, fan page or "the community"; no individual rankings)<input id="iw-by" maxlength="80" placeholder="The Willievers community"></label>
@@ -1126,7 +1128,17 @@ function clipInfo(u){
  if(host==='tiktok.com'&&(m=h.pathname.match(/\/video\/(\d+)/)))return{p:'TikTok',embed:'https://www.tiktok.com/embed/v2/'+m[1],tall:true};
  if(host==='instagram.com'&&(m=h.pathname.match(/\/(reels?|p|tv)\/([\w-]+)/)))return{p:'Instagram',embed:'https://www.instagram.com/'+(m[1]==='p'||m[1]==='tv'?m[1]:'reel')+'/'+m[2]+'/embed',tall:true};
  if(host==='facebook.com'||host==='fb.watch')return{p:'Facebook',embed:'https://www.facebook.com/plugins/video.php?show_text=false&href='+encodeURIComponent(u)};
+ if((host==='x.com'||host==='twitter.com')&&(m=h.pathname.match(/\/status(?:es)?\/(\d+)/)))return{p:'X',xid:m[1]};
  return{p:host}}
+function xThumb(id,cb){var k='wa_xt_'+id;try{var c=localStorage.getItem(k);if(c){cb(c);return}}catch(e){}
+ fetch('https://api.fxtwitter.com/status/'+id).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){var md=(j&&j.tweet&&j.tweet.media)||{},v=(md.videos||[])[0],ph=(md.photos||[])[0],al=(md.all||[])[0],u=(v&&v.thumbnail_url)||(ph&&ph.url)||(al&&(al.thumbnail_url||al.url));
+  if(u&&/^https:\/\/[^"')\s]+$/.test(u)){try{localStorage.setItem(k,u)}catch(e){}cb(u)}}).catch(function(){})}
+function vidPoster(el,info,url,own){
+ var set=function(u){if(u&&/^https:\/\/[^"')\s]+$/.test(u))el.style.backgroundImage='url("'+u+'")'};
+ if(own&&own.indexOf(PUBP)===0){set(own);return}
+ if(info.thumb)return;
+ if(info.xid)xThumb(info.xid,set);
+ else if(/(^|\.)tiktok\.com$/i.test(hostOf(url)))clipResolve(url,function(r){set(r&&r.thumb)})}
 function mk(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function hostOf(u){try{return new URL(u).hostname}catch(e){return''}}
 function clipResolve(u,cb){var k='wa_cr_'+u;try{var s=JSON.parse(localStorage.getItem(k)||'null');if(s&&s.url&&s.thumb&&Date.now()-s.t<10800000){cb(s);return}}catch(e){}
@@ -1141,10 +1153,10 @@ function clipFill(a,c,info){
  if(info.embed){
   v=mk('button','cv'+(info.tall?' tall':''));v.type='button';
   if(info.thumb)v.style.backgroundImage='url("'+info.thumb+'")';
-  v.appendChild(mk('span','pl','\u25b6  Play '+info.p+' preview'));
+  v.appendChild(mk('span','pl','Play '+info.p+' preview'));
   v.onclick=function(){var f=document.createElement('iframe');f.src=info.embed;f.title=c.title||'Fan edit';f.loading='lazy';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';f.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups allow-presentation');var d=mk('div','cv'+(info.tall?' tall':''));d.appendChild(f);a.replaceChild(d,v)}
  }else{v=mk('a','cv');v.href=c.url;v.target='_blank';v.rel='noopener noreferrer';v.appendChild(mk('span','pl','Open on '+info.p+' \u2197'))}
- a.appendChild(v);
+ vidPoster(v,info,c.url);a.appendChild(v);
  var m=mk('div','cm');m.appendChild(mk('b',null,c.title||'Fan edit'));m.appendChild(mk('small',null,(c.by_name?c.by_name+' \u00b7 ':'')+info.p));
  var l=mk('a',null,'Open original \u2197');l.href=c.url;l.target='_blank';l.rel='noopener noreferrer';m.appendChild(l);a.appendChild(m);return a}
 function loadClips(){
@@ -1645,7 +1657,7 @@ function iwCard(e){
  var h=mk('div','mh');h.appendChild(mk('span','mcat',IWT[e.type]||'Entry'));if(e.date)h.appendChild(mk('span','mdt',pdate(e.date)));a.appendChild(h);
  if(e.img&&e.img.indexOf(PUBP)===0){var im=mk('img','iwimg');im.src=e.img;im.alt=e.title||'Impact Wall picture';im.loading='lazy';im.onclick=function(){window.open(e.img,'_blank','noopener')};a.appendChild(im)}
  var vi=okLink(e.video)?clipInfo(e.video):null;
- if(vi){var vw=mk('div','iwvid'),vb;if(vi.embed){vb=mk('button','cv'+(vi.tall?' tall':''));vb.type='button';if(vi.thumb)vb.style.backgroundImage='url("'+vi.thumb+'")';vb.appendChild(mk('span','pl','\u25b6  Play '+vi.p+' video'));vb.onclick=function(){var f=document.createElement('iframe');f.src=vi.embed;f.title=e.title||'Video';f.loading='lazy';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';f.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups allow-presentation');var d=mk('div','cv'+(vi.tall?' tall':''));d.appendChild(f);vw.replaceChild(d,vb)}}else{vb=mk('a','cv');vb.href=e.video;vb.target='_blank';vb.rel='noopener noreferrer';vb.appendChild(mk('span','pl','Watch on '+vi.p+' \u2197'))}vw.appendChild(vb);a.appendChild(vw)}
+ if(vi){var vw=mk('div','iwvid'),vb;if(vi.embed){vb=mk('button','cv'+(vi.tall?' tall':''));vb.type='button';if(vi.thumb)vb.style.backgroundImage='url("'+vi.thumb+'")';vb.appendChild(mk('span','pl','Play '+vi.p+' video'));vb.onclick=function(){var f=document.createElement('iframe');f.src=vi.embed;f.title=e.title||'Video';f.loading='lazy';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';f.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups allow-presentation');var d=mk('div','cv'+(vi.tall?' tall':''));d.appendChild(f);vw.replaceChild(d,vb)}}else{vb=mk('a','cv');vb.href=e.video;vb.target='_blank';vb.rel='noopener noreferrer';vb.appendChild(mk('span','pl','Watch on '+vi.p+' \u2197'))}vidPoster(vb,vi,e.video,e.vthumb);vw.appendChild(vb);a.appendChild(vw)}
  a.appendChild(mk('h3',null,e.title));if(e.desc)a.appendChild(mk('p','md',e.desc));
  a.appendChild(mk('div','mpt','Credit: '+(e.by||'the Willievers community')));
  if(e.ver){var v=mk('div');v.appendChild(mk('span','iwv','\u2713 Verified'));if(e.vnote)v.appendChild(mk('div','mpt',e.vnote));a.appendChild(v)}
@@ -1666,7 +1678,12 @@ function renderIW(){
  list.textContent='';var grid=null,yr=null;
  items.forEach(function(e){var y=(e.date||'').slice(0,4)||'Undated';if(y!==yr){yr=y;list.appendChild(mk('h3','iwy',y));grid=mk('div','mgrid');list.appendChild(grid)}grid.appendChild(iwCard(e))});
  $('iw-empty').style.display=S.iw.length&&!items.length?'':'none'}
-var iwPic='';
+var iwPic='',iwVT='';
+function iwSetVT(u){iwVT=u;$('iw-vv').hidden=!u;if(u)$('iw-vi').src=u}
+$('iw-vr').onclick=function(){iwSetVT('');$('iw-vf').value=''};
+$('iw-vf').onchange=function(){var f=this.files[0],m=$('iw-m');if(!f)return;m.textContent='Uploading preview\u2026';
+ shrink(f,1200,.78,function(d){upImg(d,'impact').catch(function(){return upImg(d,'fans')}).then(function(u){iwSetVT(u);m.textContent=''}).catch(function(){m.textContent='Could not upload the preview. Please try again.'})})};
+
 function iwSetPic(u){iwPic=u;$('iw-pv').hidden=!u;if(u)$('iw-pi').src=u}
 $('iw-pr').onclick=function(){iwSetPic('');$('iw-pf').value=''};
 $('iw-pf').onchange=function(){var f=this.files[0],m=$('iw-m');if(!f)return;m.textContent='Uploading picture\u2026';
@@ -1674,7 +1691,7 @@ $('iw-pf').onchange=function(){var f=this.files[0],m=$('iw-m');if(!f)return;m.te
 function openIW(e){
  iwId=e?e.id:null;e=e||{};
  $('iw-ty').value=e.type||'project';$('iw-t').value=e.title||'';$('iw-d').value=e.desc||'';$('iw-dt').value=e.date||'';$('iw-by').value=e.by||'';$('iw-l').value=e.link||'';$('iw-v').checked=!!e.ver;$('iw-vn').value=e.vnote||'';
- $('iw-vl').value=e.video||'';$('iw-pf').value='';iwSetPic(e.img||'');
+ $('iw-vl').value=e.video||'';$('iw-pf').value='';iwSetPic(e.img||'');$('iw-vf').value='';iwSetVT(e.vthumb||'');
  $('iw-m').textContent='';$('iw-del').style.display=iwId&&PW?'':'none';$('iwm').hidden=false}
 $('iw-add').onclick=function(){openIW(null)};$('iw-x').onclick=function(){$('iwm').hidden=true};
 $('iw-ok').onclick=function(){
@@ -1685,7 +1702,7 @@ $('iw-ok').onclick=function(){
  var vl=$('iw-vl').value.trim();if(vl&&!okLink(vl)){m.textContent='The video link must start with https://';return}
  if(ty==='milestone'&&!ver){m.textContent='Milestones must be marked verified, with a source link.';return}
  if(ver&&!l){m.textContent='A verified entry needs a source link.';return}
- var o={id:iwId||Date.now().toString(36),type:ty,title:t,desc:$('iw-d').value.trim(),date:dt,by:$('iw-by').value.trim(),link:l,ver:ver,vnote:ver?$('iw-vn').value.trim():'',img:iwPic,video:vl},done=false;
+ var o={id:iwId||Date.now().toString(36),type:ty,title:t,desc:$('iw-d').value.trim(),date:dt,by:$('iw-by').value.trim(),link:l,ver:ver,vnote:ver?$('iw-vn').value.trim():'',img:iwPic,video:vl,vthumb:vl?iwVT:''},done=false;
  m.textContent='Saving\u2026';
  rpc('iw_upsert_public',{p_artist:ART,p_entry:o}).then(function(){
   S.iw=S.iw||[];var dn=false;S.iw.forEach(function(x,i){if(x.id===o.id){S.iw[i]=o;dn=true}});if(!dn)S.iw.push(o);
