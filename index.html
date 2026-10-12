@@ -471,10 +471,20 @@ label.fcn1{cursor:pointer}label.fcn1:hover,.fcn1.mine{border-color:var(--rose)}
 .fcres{padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:var(--ink2)}.fcres.win{border-color:var(--rose)}
 .fcrh{display:flex;justify-content:space-between;gap:8px;align-items:center}
 .fcbar{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0 4px}.fcbar i{display:block;height:100%;background:linear-gradient(90deg,var(--rose),var(--rose2))}
-.iwy{font:400 24px var(--serif);color:var(--rose2);margin:26px 0 12px}.iwy small{font:400 13px var(--sans);color:var(--mute);margin-left:10px}.iwrow{position:relative}.iwlist{display:flex;gap:14px;align-items:stretch;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:2px 2px 8px}.iwlist::-webkit-scrollbar{display:none}.iwlist>.mc{flex:0 0 min(88%,380px);min-width:0;scroll-snap-align:start}.iwrow>.iwnav.p{left:-2px}.iwrow>.iwnav.n{right:-2px}
+.iwy{font:400 24px var(--serif);color:var(--rose2);margin:26px 0 12px}.iwy small{font:400 13px var(--sans);color:var(--mute);margin-left:10px}.iwd{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}.iwd.open{display:block;-webkit-line-clamp:unset}.iwmore{align-self:flex-start;background:none;border:0;padding:0;color:var(--rose2);font:600 14px var(--sans);cursor:pointer}.iwrow{position:relative}.iwlist{display:flex;gap:14px;align-items:flex-start;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:2px 2px 8px}.iwlist::-webkit-scrollbar{display:none}.iwlist>.mc{flex:0 0 min(88%,380px);min-width:0;scroll-snap-align:start}.iwrow>.iwnav.p{left:-2px}.iwrow>.iwnav.n{right:-2px}
 .iwc[data-cat=project]{border-left-color:#e0306f}.iwc[data-cat=celebration]{border-left-color:#e6c48a}.iwc[data-cat=creative]{border-left-color:#b57bff}.iwc[data-cat=milestone]{border-left-color:#1fd8b0}
 .iwv{display:inline-block;font:600 12px var(--sans);padding:3px 10px;border-radius:99px;background:#1fd8b0;color:#06231c}
-#iw-s{margin:0 0 22px}.iwimg{display:block;width:100%;height:auto;max-height:min(58vh,440px);object-fit:contain;border-radius:10px;cursor:zoom-in;background:#0d1118}.iwvid{border-radius:10px;overflow:hidden}#iw-pv[hidden],#iw-vv[hidden]{display:none!important}#iw-pv{display:flex;flex-wrap:wrap;gap:10px}.iwth{position:relative}.iwth img{width:72px;height:72px;object-fit:cover;border-radius:8px;display:block}.iwth button{position:absolute;top:-7px;right:-7px;width:22px;height:22px;padding:0!important;line-height:1;border-radius:50%!important}.iwcar{position:relative}.iwtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;border-radius:10px;background:#0d1118}.iwtrack::-webkit-scrollbar{display:none}.iws{flex:0 0 100%;min-width:0;scroll-snap-align:center;display:flex;align-items:center;justify-content:center}.iws .iwvid{width:100%}.iwnav{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;padding:0;border-radius:50%;border:0;background:#000a;color:#fff;font-size:22px;line-height:1;cursor:pointer;z-index:2}.iwnav.p{left:6px}.iwnav.n{right:6px}.iwcnt{position:absolute;top:8px;left:8px;z-index:2;padding:2px 9px;border-radius:99px;background:#000a;color:#fff;font-size:12px}.iwdots{display:flex;justify-content:center;gap:6px;margin-top:8px}.iwdots i{width:7px;height:7px;border-radius:50%;background:#ffffff40}.iwdots i.on{background:#ff4f8b}#iw-vv{display:flex;align-items:center;gap:10px}#iw-vi{width:84px;height:84px;object-fit:cover;border-radius:8px}
+/* music hub */
+#mhm{position:fixed;inset:0;z-index:125;background:#000c;display:flex;align-items:center;justify-content:center;padding:16px}#mhm[hidden]{display:none}
+.mht,.mhf{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}.mht{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}.mht::-webkit-scrollbar{display:none}
+.mht button,.mhf button{cursor:pointer;white-space:nowrap;border:1px solid var(--line);background:var(--ink2);color:var(--mute);padding:6px 16px;border-radius:99px;font:600 14px var(--sans)}.mht button{padding:8px 18px;font-size:15px}
+.mht button[aria-pressed=true],.mhf button[aria-pressed=true]{background:var(--rose);border-color:var(--rose);color:#fff}
+.mhtn{margin:0 0 16px}.mhg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;align-items:start}
+.mhtx{white-space:pre-wrap;overflow-wrap:anywhere;font-size:15px;color:var(--soft);background:#0000003a;border:1px dashed var(--line);border-radius:10px;padding:10px 12px}
+.mhgo,.mhcp{display:inline-block;cursor:pointer;text-decoration:none;border:1px solid var(--rose);background:var(--rose);color:#fff;border-radius:99px;padding:7px 18px;font:600 14px var(--sans)}.mhcp{background:none;color:var(--rose2)}
+.mhs{display:flex;flex-direction:column;gap:2px;padding:8px 0;border-top:1px solid var(--line)}.mhs:first-child{border-top:0}.mhs small{color:var(--mute)}.mhs p{white-space:pre-line;overflow-wrap:anywhere;margin:2px 0 0}
+.mhc ol{margin:0;padding-left:20px;display:grid;gap:6px}.mhadd{display:none;margin:14px 8px 0 0}body.ed .mhadd{display:inline-block}
+#iw-s{margin:0 0 22px}.iwimg{display:block;width:100%;height:auto;max-height:min(46vh,340px);object-fit:contain;border-radius:10px;cursor:zoom-in;background:#0d1118}.iwvid{border-radius:10px;overflow:hidden}#iw-pv[hidden],#iw-vv[hidden]{display:none!important}#iw-pv{display:flex;flex-wrap:wrap;gap:10px}.iwth{position:relative}.iwth img{width:72px;height:72px;object-fit:cover;border-radius:8px;display:block}.iwth button{position:absolute;top:-7px;right:-7px;width:22px;height:22px;padding:0!important;line-height:1;border-radius:50%!important}.iwcar{position:relative}.iwtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;border-radius:10px;background:#0d1118}.iwtrack::-webkit-scrollbar{display:none}.iws{flex:0 0 100%;min-width:0;scroll-snap-align:center;display:flex;align-items:center;justify-content:center}.iws .iwvid{width:100%}.iwnav{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;padding:0;border-radius:50%;border:0;background:#000a;color:#fff;font-size:22px;line-height:1;cursor:pointer;z-index:2}.iwnav.p{left:6px}.iwnav.n{right:6px}.iwcnt{position:absolute;top:8px;left:8px;z-index:2;padding:2px 9px;border-radius:99px;background:#000a;color:#fff;font-size:12px}.iwdots{display:flex;justify-content:center;gap:6px;margin-top:8px}.iwdots i{width:7px;height:7px;border-radius:50%;background:#ffffff40}.iwdots i.on{background:#ff4f8b}#iw-vv{display:flex;align-items:center;gap:10px}#iw-vi{width:84px;height:84px;object-fit:cover;border-radius:8px}
 #fc-add{display:none;margin-top:16px}body.ed #fc-add{display:inline-block}#iw-add{display:inline-block;margin-top:16px}#iw-list .rmx{display:block}#d-unlock{display:none!important}
 #fcm,#iwm{position:fixed;inset:0;z-index:125;background:#000c;display:flex;align-items:center;justify-content:center;padding:16px}#fcm[hidden],#iwm[hidden]{display:none}
 .mfg label.chk{flex-direction:row;align-items:center;gap:8px}
@@ -651,7 +661,7 @@ body.pq-instage .pq-fl,body.ed .pq-fl,body.ed .pq-showb{display:none}
 .fpg{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:8px 0 18px}
 .fpc{display:grid;gap:6px;padding:8px;border:1px solid var(--line);border-radius:12px;background:var(--ink2);font-size:13px}
 .fpc img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px}
-</style></head><body><nav><div class="wrap"><a class="brand" href="#home"><b>WA</b><span>WILL ASHLEY<small>ACTOR PORTFOLIO</small></span></a><div class="nl"><a href="#home">Home</a><a href="#filmography">Filmography</a><a href="#awards">Recognition</a><a href="#press">Press</a><a href="#gallery">Gallery</a><a href="#clips">Willievers Corner</a><a href="#letters">Letters to Will</a><a href="#capsule">Time Capsule</a><a href="#world">Around the World</a><a href="#mission">Mission Board</a><a href="#companion">Companion</a><a href="#scrapbook">Scrapbook</a><a href="#willaughers">WILLaughers</a><a href="#williever-id">WILLiever ID</a><a href="#fan-choice">Fan Choice</a><a href="#impact">Impact Wall</a><a href="#fandom">Fandom</a><a href="#about">About</a></div><a class="fol" href="#press">Latest news</a></div></nav>
+</style></head><body><nav><div class="wrap"><a class="brand" href="#home"><b>WA</b><span>WILL ASHLEY<small>ACTOR PORTFOLIO</small></span></a><div class="nl"><a href="#home">Home</a><a href="#filmography">Filmography</a><a href="#awards">Recognition</a><a href="#press">Press</a><a href="#gallery">Gallery</a><a href="#clips">Willievers Corner</a><a href="#letters">Letters to Will</a><a href="#capsule">Time Capsule</a><a href="#world">Around the World</a><a href="#mission">Mission Board</a><a href="#music">Music Hub</a><a href="#companion">Companion</a><a href="#scrapbook">Scrapbook</a><a href="#willaughers">WILLaughers</a><a href="#williever-id">WILLiever ID</a><a href="#fan-choice">Fan Choice</a><a href="#impact">Impact Wall</a><a href="#fandom">Fandom</a><a href="#about">About</a></div><a class="fol" href="#press">Latest news</a></div></nav>
 <header class="hero hx" id="home"><div class="hbg"><div class="ph" data-id="hero"></div></div><div class="wrap"><small class="eyebrow">FILIPINO ACTOR &amp; SINGER</small><h1><em>Will</em>Ashley</h1><p class="tag">From young versions of lead roles<br>to award-winning supporting turns.</p><a class="ghost" href="#filmography">Explore Filmography →</a>
 <div class="stats"><div>Born <b>Sep 17, 2002</b></div><div>Label <b>GMA Sparkle</b></div><div>Latest <b>Best Supporting Actor, Gawad Urian 2026</b></div></div></div></header>
 <section class="feat"><div class="wrap"><div class="hd"><h2>Featured Projects</h2><a href="#filmography">View All Projects →</a></div><div class="fcar"><button class="ar l" aria-label="Previous">‹</button><div class="fr"><article class="fc"><div class="ph" data-id="fc1"></div><b>B</b><div><h3>Bar Boys: After School</h3><p>2025 · Film &nbsp;·&nbsp; as <i>Arvin Asuncion</i></p></div></article><article class="fc"><div class="ph" data-id="fc2"></div><b>8</b><div><h3>The Secrets of Hotel 88</h3><p>2026 · TV Series &nbsp;·&nbsp; as <i>Kiko Endaya</i></p></div></article><article class="fc"><div class="ph" data-id="fc3"></div><b>B</b><div><h3>Balota</h3><p>2024 · Film &nbsp;·&nbsp; <i>supporting role</i></p></div></article><article class="fc"><div class="ph" data-id="fc4"></div><b>D</b><div><h3>Delivery Boi</h3><p>Upcoming · GMA Afternoon Prime &nbsp;·&nbsp; <i>lead role</i></p></div></article></div><button class="ar r" aria-label="Next">›</button></div></div></section>
@@ -704,6 +714,7 @@ body.pq-instage .pq-fl,body.ed .pq-fl,body.ed .pq-showb{display:none}
 <h3 class="cph">Messages from around the world</h3><div class="lgrid" id="w-wall"></div><button type="button" id="w-more" class="dadd" style="display:none;margin-top:18px">Show more messages</button><p class="note" id="w-empty">No one is on the map yet. Be the first!</p>
 </div></section>
 <section id="mission" class="empty"><div class="wrap"><h2>WILLievers Mission Board</h2><p class="note">Let's move together! Streaming and voting guides, birthday projects, fan art challenges, event reminders and community progress, all in one place.</p><div class="stats" id="mbs"></div><div id="mbf"></div><div class="mgrid" id="mgrid"></div><button type="button" id="mb-add" class="dadd">+ Add mission</button><p class="note" id="mempty" style="display:none">Nothing here yet. Check back soon!</p></div></section>
+<section id="music" class="alt empty"><div class="wrap"><h2>WILLievers Music Team Hub</h2><p class="note">One page for everything music: the activity calendar, the Stationhead Lounge, the promo kit and the campaign archive. Fans can see what is happening and help out without asking around.</p><div class="mht" id="mh-tabs" role="group" aria-label="Music Team Hub sections"></div><div id="mh-body"></div></div></section>
 <section id="companion"><div class="wrap pq">
 <h2>Your Little WILLiever Companion</h2>
 <p class="note">A tiny partner for exploring, creating and celebrating everything Will Ashley. It lives on this site, reacts to what you do, and grows with you as you explore, finish missions and collect badges. It is an original little mascot, not Will himself. Everything is saved on your device only; nothing is uploaded unless you choose to show your companion on the map.</p>
@@ -809,7 +820,7 @@ body.pq-instage .pq-fl,body.ed .pq-fl,body.ed .pq-showb{display:none}
 <div id="dlist"></div>
 
 </div></section>
-<footer><div class="wrap fg"><a class="brand" href="#home"><b>WA</b><span>WILL ASHLEY<small>ACTOR PORTFOLIO</small></span></a><div class="fn"><a href="#home">Home</a><a href="#filmography">Filmography</a><a href="#awards">Recognition</a><a href="#press">Press</a><a href="#gallery">Gallery</a><a href="#clips">Willievers Corner</a><a href="#letters">Letters to Will</a><a href="#capsule">Time Capsule</a><a href="#world">Around the World</a><a href="#mission">Mission Board</a><a href="#companion">Companion</a><a href="#scrapbook">Scrapbook</a><a href="#willaughers">WILLaughers</a><a href="#williever-id">WILLiever ID</a><a href="#fan-choice">Fan Choice</a><a href="#impact">Impact Wall</a><a href="#fandom">Fandom</a><a href="#about">About</a></div><p>An independent, unofficial portfolio. Not affiliated with Will Ashley, GMA Network or his management.<br>Made by <b>Serene</b></p></div></footer>
+<footer><div class="wrap fg"><a class="brand" href="#home"><b>WA</b><span>WILL ASHLEY<small>ACTOR PORTFOLIO</small></span></a><div class="fn"><a href="#home">Home</a><a href="#filmography">Filmography</a><a href="#awards">Recognition</a><a href="#press">Press</a><a href="#gallery">Gallery</a><a href="#clips">Willievers Corner</a><a href="#letters">Letters to Will</a><a href="#capsule">Time Capsule</a><a href="#world">Around the World</a><a href="#mission">Mission Board</a><a href="#music">Music Hub</a><a href="#companion">Companion</a><a href="#scrapbook">Scrapbook</a><a href="#willaughers">WILLaughers</a><a href="#williever-id">WILLiever ID</a><a href="#fan-choice">Fan Choice</a><a href="#impact">Impact Wall</a><a href="#fandom">Fandom</a><a href="#about">About</a></div><p>An independent, unofficial portfolio. Not affiliated with Will Ashley, GMA Network or his management.<br>Made by <b>Serene</b></p></div></footer>
 <script>
 document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.ar');if(!b)return;var r=b.parentNode.querySelector('.fr');r.scrollBy({left:(b.classList.contains('r')?1:-1)*(r.firstElementChild.offsetWidth+18),behavior:'smooth'})});
 document.addEventListener('input',function(e){if(e.target.id!=='fq')return;var q=e.target.value.trim().toLowerCase();[].forEach.call(document.querySelectorAll('.film li'),function(li){li.classList.toggle('nm',!!q&&li.textContent.toLowerCase().indexOf(q)<0)})});
@@ -906,6 +917,8 @@ $('dadmin').hidden=false;$('d-lock').hidden=true;
 render();load();
 })();
 </script><div id="pc" hidden><div class="pcb" role="dialog" aria-label="Photo"><b>Photo</b><div id="pcf" class="ph has"></div><p class="pch">Drag the picture to move it. Use Zoom to resize.</p><div class="pcr"><label><input type="checkbox" id="pc-sb"> Allow fans to use this photo in the Scrapbook and WILLaughers meme generator (only if licensed or permitted)</label></div><div class="pcr"><label style="flex:1">Credit / permission note<input type="text" id="pc-cr" maxlength="80" placeholder="e.g. Photo: Name, used with permission"></label></div><div class="pcr"><label>Zoom<input type="range" id="pc-z" min="100" max="300" value="100"></label><button id="pc-fit" type="button">Fill frame</button></div><div class="pcr"><button id="pc-pick" type="button">Choose photo</button><button id="pc-del" type="button">Remove</button><button id="pc-ok" type="button" class="go">Save</button><button id="pc-x" type="button">Cancel</button></div></div></div>
+<div id="mhm" hidden><div class="pcb" role="dialog" aria-label="Music Team Hub entry"><b id="mh-mt">Entry</b><div class="mfg" id="mh-f"></div>
+<div class="pcr"><button id="mh-ok" type="button" class="go">Save</button><button id="mh-del" type="button">Delete</button><button id="mh-x" type="button">Cancel</button><span id="mh-m" role="status"></span></div></div></div>
 <div id="mbm" hidden><div class="pcb" role="dialog" aria-label="Mission"><b>Mission</b><div class="mfg"><label>Type<select id="mb-cat"></select></label><label>Title<input id="mb-t" maxlength="80"></label><label>Details or steps<textarea id="mb-d" rows="4" maxlength="600"></textarea></label><label>Link (https://)<input id="mb-l" maxlength="400" inputmode="url"></label><label>Date (event day or deadline)<input id="mb-dt" type="date"></label><label>Progress now<input id="mb-c" type="number" min="0" step="any" inputmode="decimal"></label><label>Goal<input id="mb-g" type="number" min="0" step="any" inputmode="decimal"></label><label>Unit (e.g. streams, votes)<input id="mb-u" maxlength="20"></label></div><div class="pcr"><button id="mb-ok" type="button" class="go">Save</button><button id="mb-del" type="button">Delete</button><button id="mb-x" type="button">Cancel</button><span id="mb-m" role="status"></span></div></div></div>
 <div id="fcm" hidden><div class="pcb" role="dialog" aria-label="Fan Choice poll"><b>Fan Choice poll</b><div class="mfg">
 <label>Poll title<input id="fc-t" maxlength="80"></label>
@@ -983,7 +996,7 @@ function apply(){
 }
 function inPanel(n){return n.closest&&n.closest('#ep,#ebtn,#lk,#pc,#mbm,#fppend,.ph')}
 function pics(){return Array.prototype.filter.call(document.images,function(i){return!inPanel(i)})}
-function leaves(){return Array.prototype.filter.call(document.querySelectorAll('h1,h2,h3,h4,p,figcaption,blockquote,li,b,time,small,em,u'),function(e){return!e.children.length&&!e.closest('#ep,#lk,#pc,#fppend,#dlist,#dchips,#cpend,#lpend,#lfeat,#mbs,#mbf,#mbm,.cc,.gi,.lc,.mc,nav,.dent')})}
+function leaves(){return Array.prototype.filter.call(document.querySelectorAll('h1,h2,h3,h4,p,figcaption,blockquote,li,b,time,small,em,u'),function(e){return!e.children.length&&!e.closest('#ep,#lk,#pc,#fppend,#dlist,#dchips,#cpend,#lpend,#lfeat,#mbs,#mbf,#mbm,#mh-body,#mh-tabs,.cc,.gi,.lc,.mc,nav,.dent')})}
 function shrink(file,max,q,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',q))};im.onerror=function(){msg.textContent='Could not read that image.'};im.src=r.result};r.readAsDataURL(file)}
 var BUCKET='will-ashley-photos',PUBP=SB+'/storage/v1/object/public/'+BUCKET+'/',FP=[];
 function uid(){return(window.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2,10)}
@@ -1061,7 +1074,7 @@ function ents(){return document.querySelectorAll('#awlist .aw,#prlist .upd')}
 function ekey(a){var h=a.querySelector('h3'),p=a.querySelector('p');return(h?h.dataset.o:'')+'|'+(p?p.dataset.o:'')}
 function gone(){ents().forEach(function(a){var g=S.rm.indexOf(ekey(a))>-1;a.classList.toggle('gone',g);var b=a.querySelector('.rmx');if(b)b.textContent=g?'\u21a9':'\u00d7'})}
 function applyPh(){
- S.ph=S.ph||{};S.rm=S.rm||[];S.gal=S.gal||[];buildGal();renderMB();buildLib();buildMLib();renderFC();renderIW();
+ S.ph=S.ph||{};S.rm=S.rm||[];S.gal=S.gal||[];buildGal();renderMB();renderMH();buildLib();buildMLib();renderFC();renderIW();
  document.querySelectorAll('.ph[data-id]').forEach(function(el){renderPh(el,S.ph[el.dataset.id])});
  var h=document.querySelector('.hbg');if(h)h.classList.toggle('ph-on',!!(S.ph.hero&&S.ph.hero.src));
  gone()}
@@ -1655,6 +1668,106 @@ $('fc-ok').onclick=function(){
   if(!keep&&!confirm('This removes or renames a category or nominee that may already have votes. Those votes will no longer be counted. Continue?'))return}
  S.fc=np;fcTal=null;$('fcm').hidden=true;renderFC();save()};
 $('fc-del').onclick=function(){if(!confirm('Delete this poll? The page will stop showing it.'))return;delete S.fc;fcTal=null;$('fcm').hidden=true;renderFC();save()};
+/* music team hub */
+var MHT={cal:'Activity Calendar',lounge:'Stationhead Lounge',kit:'Promo Kit',arc:'Campaign Archive'},mhTab='cal',mhFil={cal:'all',kit:'all',arc:'all'},
+ MCT={listening:'Listening party',stationhead:'Stationhead',release:'Release',promo:'Promotion'},
+ MKT={caption:'Caption',pubmat:'Pubmat',stream:'Streaming link',hashtag:'Hashtags',guide:'Promo guide'},
+ MAT={project:'Music project',party:'Listening party',promo:'Completed promotion',milestone:'Milestone'},
+ MHF={cal:MCT,kit:MKT,arc:MAT},MHN={cal:'Listening parties, Stationhead schedules, release dates and ongoing promotions, all in one place.',lounge:'Join the lounge, see the upcoming sessions and read the latest host announcements.',kit:'Ready-to-share captions, pubmats, official streaming links, hashtags and promo guides. Tap Copy, then post.',arc:'Past music projects, listening parties, completed promotions and milestones, so the team’s effort stays on the timeline.'};
+function mhd(){S.mh=S.mh||{};var m=S.mh;m.cal=m.cal||[];m.kit=m.kit||[];m.arc=m.arc||[];m.lounge=m.lounge||{link:'',join:'',ann:[]};m.lounge.ann=m.lounge.ann||[];return m}
+function mhEd(fn,lab){var x=mk('button','rmx','✎');x.type='button';x.setAttribute('aria-label',lab||'Edit');x.onclick=fn;return x}
+function mhClamp(par,text){var dp=mk('p','md iwd',text);par.appendChild(dp);if(text.length>120||(text.match(/\n/g)||[]).length>1){var rb=mk('button','iwmore','Read more');rb.type='button';rb.onclick=function(){var o=dp.classList.toggle('open');rb.textContent=o?'Show less':'Read more'};par.appendChild(rb)}}
+function mhCopy(text,btn){var done=function(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy'},1600)},fb=function(){var t=document.createElement('textarea');t.value=text;t.style.cssText='position:fixed;opacity:0;top:0';document.body.appendChild(t);t.select();try{document.execCommand('copy');done()}catch(e){btn.textContent='Press and hold to copy'}t.remove()};
+ if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(text).then(done).catch(fb);else fb()}
+function mhChips(kind){var f=mk('div','mhf');f.setAttribute('role','group');var ks=['all'].concat(Object.keys(MHF[kind]));ks.forEach(function(k){var b=mk('button',null,k==='all'?'All':MHF[kind][k]);b.type='button';b.setAttribute('aria-pressed',String(mhFil[kind]===k));b.onclick=function(){mhFil[kind]=k;renderMH()};f.appendChild(b)});return f}
+function mhLink(par,u,lab){if(!okLink(u))return;var ac=mk('div','ma'),l=mk('a',null,lab);l.href=u;l.target='_blank';l.rel='noopener noreferrer';ac.appendChild(l);par.appendChild(ac);return ac}
+function mhImgEl(u,alt){if(!u||u.indexOf(PUBP)!==0)return null;var im=mk('img','iwimg');im.src=u;im.alt=alt||'';im.loading='lazy';im.onclick=function(){window.open(u,'_blank','noopener')};return im}
+function mhRow(items,fn){var r=iwRow();items.forEach(function(x){r.tr.appendChild(fn(x))});return r.wrap}
+function mhAdd(par,kind,lab){var b=mk('button','dadd mhadd',lab);b.type='button';b.onclick=function(){mhOpen(kind,null)};par.appendChild(b)}
+function mhNone(par,n,ed){if(!n&&!ed)par.appendChild(mk('p','note','Nothing here yet. Check back soon!'))}
+function mhCalCard(m){var n=dleft(m.date),a=mk('article','mc mhc'+(n!==null&&n<0?' past':''));a.dataset.cat=m.type;
+ var h=mk('div','mh');h.appendChild(mk('span','mcat',MCT[m.type]||'Activity'));if(n!==null)h.appendChild(mk('span','mdt',fdate(m.date)+' · '+dtxt(n)));a.appendChild(h);
+ a.appendChild(mk('h3',null,m.title));if(m.time)a.appendChild(mk('div','mpt','⏰ '+m.time));if(m.desc)mhClamp(a,m.desc);
+ var ac=mhLink(a,m.link,m.type==='stationhead'?'Open Stationhead ↗':'Open link ↗');
+ if(n!==null&&n>=0){if(!ac){ac=mk('div','ma');a.appendChild(ac)}var c=mk('button',null,'\u{1F4C5} Add to calendar');c.type='button';c.onclick=function(){ics({id:m.id,title:m.title,date:m.date,desc:(m.time?'Time: '+m.time+'\n':'')+(m.desc||''),link:m.link})};ac.appendChild(c)}
+ a.appendChild(mhEd(function(){mhOpen('cal',m)},'Edit activity'));return a}
+function mhCal(root,d,ed){
+ root.appendChild(mk('p','note mhtn',MHN.cal));
+ var all=d.cal.map(function(m){return{m:m,n:dleft(m.date)}}).filter(function(x){return ed||x.n===null||x.n>=-7});
+ var up=all.filter(function(x){return x.n!==null&&x.n>=0}).sort(function(a,b){return a.n-b.n});
+ if(d.cal.length){var s2=mk('div','stats');s2.style.marginTop='0';s2.style.marginBottom='18px';var pill=function(l,v){var e=mk('div',null,l+' ');e.appendChild(mk('b',null,v));s2.appendChild(e)};pill('Upcoming',String(up.length));if(up[0])pill('Next up',up[0].m.title+' ('+dtxt(up[0].n)+')');root.appendChild(s2)}
+ root.appendChild(mhChips('cal'));
+ var rk=function(x){return x.n===null?1:x.n<0?2:0};
+ var list=all.filter(function(x){return mhFil.cal==='all'||x.m.type===mhFil.cal}).sort(function(a,b){return rk(a)-rk(b)||(rk(a)===0?a.n-b.n:rk(a)===2?b.n-a.n:0)});
+ if(list.length)root.appendChild(mhRow(list,function(x){return mhCalCard(x.m)}));mhNone(root,list.length,ed);mhAdd(root,'cal','+ Add activity')}
+function mhLounge(root,d,ed){
+ var L=d.lounge;root.appendChild(mk('p','note mhtn',MHN.lounge));var g=mk('div','mhg');
+ var c1=mk('article','mc mhc');c1.appendChild(mk('h3',null,'Stationhead Lounge'));
+ if(okLink(L.link)){c1.appendChild(mk('p','md','Tap below to open the lounge and join the listening session.'));var go=mk('a','mhgo','Open the lounge ↗');go.href=L.link;go.target='_blank';go.rel='noopener noreferrer';go.style.alignSelf='flex-start';c1.appendChild(go)}else c1.appendChild(mk('p','md','The lounge link will be posted here soon.'));
+ g.appendChild(c1);
+ var steps=(L.join||'').split('\n').map(function(x){return x.trim()}).filter(Boolean);
+ if(steps.length){var c2=mk('article','mc mhc');c2.appendChild(mk('h3',null,'How to join'));var ol=document.createElement('ol');steps.forEach(function(t){ol.appendChild(mk('li',null,t))});c2.appendChild(ol);g.appendChild(c2)}
+ var ss=d.cal.map(function(m){return{m:m,n:dleft(m.date)}}).filter(function(x){return x.m.type==='stationhead'&&x.n!==null&&x.n>=0}).sort(function(a,b){return a.n-b.n}).slice(0,5);
+ var c3=mk('article','mc mhc');c3.appendChild(mk('h3',null,'Upcoming sessions'));
+ if(ss.length)ss.forEach(function(x){var r=mk('div','mhs');r.appendChild(mk('b',null,x.m.title));r.appendChild(mk('small',null,fdate(x.m.date)+' · '+dtxt(x.n)+(x.m.time?' · '+x.m.time:'')));c3.appendChild(r)});else c3.appendChild(mk('p','md','No sessions scheduled yet. Add one in the Activity Calendar with the Stationhead type.'));
+ g.appendChild(c3);
+ var c4=mk('article','mc mhc');c4.appendChild(mk('h3',null,'Host announcements'));
+ var an=L.ann.slice().sort(function(a,b){return(b.date||'').localeCompare(a.date||'')});
+ if(an.length)an.forEach(function(x){var r=mk('div','mhs');if(x.date)r.appendChild(mk('small',null,fdate(x.date)+', '+x.date.slice(0,4)));r.appendChild(mk('p',null,x.text));if(ed){var eb=mk('button','mhcp','Edit');eb.type='button';eb.style.alignSelf='flex-start';eb.onclick=function(){mhOpen('ann',x)};r.appendChild(eb)}c4.appendChild(r)});else c4.appendChild(mk('p','md','No announcements yet.'));
+ g.appendChild(c4);root.appendChild(g);
+ var b=mk('button','dadd mhadd','Edit lounge link & steps');b.type='button';b.onclick=function(){mhOpen('lounge',L)};root.appendChild(b);mhAdd(root,'ann','+ Add announcement')}
+function mhKitCard(k){var a=mk('article','mc mhc');var h=mk('div','mh');h.appendChild(mk('span','mcat',MKT[k.kind]||'Promo'));a.appendChild(h);a.appendChild(mk('h3',null,k.title));
+ var im=mhImgEl(k.img,k.title);if(im)a.appendChild(im);
+ if(k.text){if(k.kind==='caption'||k.kind==='hashtag'||k.kind==='pubmat'){a.appendChild(mk('div','mhtx',k.text));var cb=mk('button','mhcp','Copy');cb.type='button';cb.style.alignSelf='flex-start';cb.onclick=function(){mhCopy(k.text,cb)};a.appendChild(cb)}else mhClamp(a,k.text)}
+ mhLink(a,k.link,k.kind==='stream'?'Open streaming link ↗':k.kind==='pubmat'?'Open full size ↗':'Open ↗');
+ a.appendChild(mhEd(function(){mhOpen('kit',k)},'Edit promo item'));return a}
+function mhKit(root,d,ed){root.appendChild(mk('p','note mhtn',MHN.kit));root.appendChild(mhChips('kit'));
+ var list=d.kit.filter(function(k){return mhFil.kit==='all'||k.kind===mhFil.kit});
+ if(list.length)root.appendChild(mhRow(list,mhKitCard));mhNone(root,list.length,ed);mhAdd(root,'kit','+ Add promo item')}
+function mhArcCard(e){var a=mk('article','mc mhc');a.dataset.cat=e.kind;var h=mk('div','mh');h.appendChild(mk('span','mcat',MAT[e.kind]||'Entry'));if(e.date)h.appendChild(mk('span','mdt',pdate(e.date)));a.appendChild(h);
+ var im=mhImgEl(e.img,e.title);if(im)a.appendChild(im);a.appendChild(mk('h3',null,e.title));if(e.desc)mhClamp(a,e.desc);mhLink(a,e.link,'View ↗');
+ a.appendChild(mhEd(function(){mhOpen('arc',e)},'Edit archive entry'));return a}
+function mhArc(root,d,ed){root.appendChild(mk('p','note mhtn',MHN.arc));
+ if(d.arc.length){var s2=mk('div','stats');s2.style.cssText='margin:0 0 18px';Object.keys(MAT).forEach(function(k){var n=d.arc.filter(function(e){return e.kind===k}).length;if(n){var e=mk('div',null,MAT[k]+' ');e.appendChild(mk('b',null,String(n)));s2.appendChild(e)}});root.appendChild(s2)}
+ root.appendChild(mhChips('arc'));
+ var items=d.arc.filter(function(e){return mhFil.arc==='all'||e.kind===mhFil.arc}).sort(function(a,b){return(b.date||'').localeCompare(a.date||'')}),yr=null,row=null;
+ items.forEach(function(e){var y=(e.date||'').slice(0,4)||'Undated';if(y!==yr){yr=y;var n=items.filter(function(z){return((z.date||'').slice(0,4)||'Undated')===y}).length,hh=mk('h3','iwy',y);hh.appendChild(mk('small',null,n+(n===1?' entry':' entries')+(n>1?' · swipe ›':'')));root.appendChild(hh);row=iwRow();root.appendChild(row.wrap)}row.tr.appendChild(mhArcCard(e))});
+ mhNone(root,items.length,ed);mhAdd(root,'arc','+ Add archive entry')}
+function renderMH(){var root=$('mh-body');if(!root)return;var d=mhd(),ed=document.body.classList.contains('ed');
+ var any=d.cal.length||d.kit.length||d.arc.length||okLink(d.lounge.link)||d.lounge.join||d.lounge.ann.length;$('music').classList.toggle('empty',!any);
+ var t=$('mh-tabs');t.textContent='';Object.keys(MHT).forEach(function(k){var b=mk('button',null,MHT[k]);b.type='button';b.setAttribute('aria-pressed',String(k===mhTab));b.onclick=function(){mhTab=k;renderMH()};t.appendChild(b)});
+ root.textContent='';({cal:mhCal,lounge:mhLounge,kit:mhKit,arc:mhArc})[mhTab](root,d,ed)}
+var MSCH={cal:{t:'Activity',f:[['type','Type','sel',MCT],['title','Title','text',90],['date','Date','date'],['time','Time (optional, e.g. 8:00 PM PH time)','text',40],['link','Link (https://)','url'],['desc','Details','area',500]],req:['title','date']},
+ kit:{t:'Promo kit item',f:[['kind','Type','sel',MKT],['title','Title','text',90],['text','Caption, hashtags or guide text','area',1200],['link','Link (https://)','url'],['img','Pubmat picture (optional)','img']],req:['title']},
+ arc:{t:'Archive entry',f:[['kind','Type','sel',MAT],['title','Title','text',90],['date','Date','date'],['desc','What happened','area',600],['link','Link (https://)','url'],['img','Picture (optional)','img']],req:['title','date']},
+ ann:{t:'Host announcement',f:[['date','Date','date'],['text','Announcement','area',500]],req:['text']},
+ lounge:{t:'Stationhead Lounge',f:[['link','Lounge link (https://)','url'],['join','How to join (one step per line)','area',800]],req:[]}};
+var mhCur=null,mhImg='';
+function mhPv(){var b=$('mh-pv');if(!b)return;b.textContent='';b.hidden=!mhImg;if(!mhImg)return;var t=mk('div','iwth'),im=mk('img');im.src=mhImg;im.alt='Preview';var x=mk('button',null,'×');x.type='button';x.setAttribute('aria-label','Remove picture');x.onclick=function(){mhImg='';mhPv()};t.appendChild(im);t.appendChild(x);b.appendChild(t)}
+function mhOpen(kind,item){
+ mhCur={kind:kind,id:item&&item.id||null};var sc=MSCH[kind],f=$('mh-f');f.textContent='';item=item||{};mhImg='';$('mh-mt').textContent=sc.t;
+ sc.f.forEach(function(df){var l=mk('label',null,df[1]),el;
+  if(df[2]==='sel'){el=document.createElement('select');Object.keys(df[3]).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=df[3][k];el.appendChild(o)});el.value=item[df[0]]||Object.keys(df[3])[0]}
+  else if(df[2]==='area'){el=document.createElement('textarea');el.rows=4;el.maxLength=df[3];el.value=item[df[0]]||''}
+  else if(df[2]==='img'){el=document.createElement('input');el.type='file';el.accept='image/*';mhImg=item[df[0]]||'';
+   el.onchange=function(){var fl=el.files[0],m=$('mh-m');el.value='';if(!fl)return;m.textContent='Uploading picture…';shrink(fl,1400,.8,function(dd){upImg(dd,'music').catch(function(){return upImg(dd,'fans')}).then(function(u){mhImg=u;mhPv();m.textContent=''}).catch(function(){m.textContent='Could not upload the picture. Please try again.'})})}}
+  else{el=document.createElement('input');el.type=df[2]==='date'?'date':'text';if(df[3])el.maxLength=df[3];if(df[2]==='url'){el.maxLength=400;el.inputMode='url'}el.value=item[df[0]]||''}
+  el.id='mhf-'+df[0];l.appendChild(el);f.appendChild(l);
+  if(df[2]==='img'){var pv=mk('div');pv.id='mh-pv';pv.style.cssText='display:flex;flex-wrap:wrap;gap:10px';pv.hidden=true;f.appendChild(pv)}});
+ mhPv();$('mh-m').textContent='';$('mh-del').style.display=mhCur.id&&PW?'':'none';$('mhm').hidden=false}
+$('mh-x').onclick=function(){$('mhm').hidden=true};
+$('mh-ok').onclick=function(){var kind=mhCur.kind,sc=MSCH[kind],o={},m=$('mh-m');
+ for(var i=0;i<sc.f.length;i++){var df=sc.f[i],v=df[2]==='img'?mhImg:$('mhf-'+df[0]).value.trim();o[df[0]]=v;
+  if(sc.req.indexOf(df[0])>-1&&!v){m.textContent='Please fill in: '+df[1].replace(/ \(.*$/,'')+'.';return}
+  if(df[2]==='url'&&v&&!okLink(v)){m.textContent='The link must start with https://';return}}
+ var d=mhd();
+ if(kind==='lounge'){d.lounge.link=o.link;d.lounge.join=o.join}
+ else{var arr=kind==='ann'?d.lounge.ann:d[kind];o.id=mhCur.id||Date.now().toString(36);var done=false;arr.forEach(function(x,k){if(x.id===o.id){arr[k]=o;done=true}});if(!done)arr.push(o)}
+ $('mhm').hidden=true;renderMH();save()};
+$('mh-del').onclick=function(){if(!mhCur||!mhCur.id||!confirm('Delete this entry?'))return;var d=mhd(),id=mhCur.id;if(mhCur.kind==='ann')d.lounge.ann=d.lounge.ann.filter(function(x){return x.id!==id});else d[mhCur.kind]=d[mhCur.kind].filter(function(x){return x.id!==id});$('mhm').hidden=true;renderMH();save()};
+var _opMH=openPanel;openPanel=function(){_opMH();renderMH()};
+var _dnMH=$('ep-done').onclick;$('ep-done').onclick=function(){_dnMH();renderMH()};
+renderMH();
 /* impact wall */
 Object.keys(IWT).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=IWT[k];$('iw-ty').appendChild(o)});
 function iwSlides(a,sl){
@@ -1674,7 +1787,7 @@ function iwCard(e){
  var vi=okLink(e.video)?clipInfo(e.video):null;
  if(vi){var vw=mk('div','iwvid'),vb;if(vi.embed){vb=mk('button','cv'+(vi.tall?' tall':''));vb.type='button';if(vi.thumb)vb.style.backgroundImage='url("'+vi.thumb+'")';vb.appendChild(mk('span','pl','Play '+vi.p+' video'));vb.onclick=function(){var f=document.createElement('iframe');f.src=vi.embed;f.title=e.title||'Video';f.loading='lazy';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';f.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups allow-presentation');var d=mk('div','cv'+(vi.tall?' tall':''));d.appendChild(f);vw.replaceChild(d,vb)}}else{vb=mk('a','cv');vb.href=e.video;vb.target='_blank';vb.rel='noopener noreferrer';vb.appendChild(mk('span','pl','Watch on '+vi.p+' \u2197'))}vidPoster(vb,vi,e.video,e.vthumb);vw.appendChild(vb);sl.push(vw)}
  iwSlides(a,sl);
- a.appendChild(mk('h3',null,e.title));if(e.desc)a.appendChild(mk('p','md',e.desc));
+ a.appendChild(mk('h3',null,e.title));if(e.desc){var dp=mk('p','md iwd',e.desc);a.appendChild(dp);if(e.desc.length>120||(e.desc.match(/\n/g)||[]).length>1){var rb=mk('button','iwmore','Read more');rb.type='button';rb.onclick=function(){var o=dp.classList.toggle('open');rb.textContent=o?'Show less':'Read more'};a.appendChild(rb)}}
  a.appendChild(mk('div','mpt','Credit: '+(e.by||'the Willievers community')));
  if(e.ver){var v=mk('div');v.appendChild(mk('span','iwv','\u2713 Verified'));if(e.vnote)v.appendChild(mk('div','mpt',e.vnote));a.appendChild(v)}
  if(okLink(e.link)){var ac=mk('div','ma'),l=mk('a',null,'Source \u2197');l.href=e.link;l.target='_blank';l.rel='noopener noreferrer';ac.appendChild(l);a.appendChild(ac)}
@@ -2266,6 +2379,7 @@ var SEC={
  capsule:['Time Capsule','curious','A time capsule? Let\u2019s seal a message for later!','We found the time capsule today. Future us will love it.'],
  world:['Around the World','curious','Willievers everywhere!','We spotted fans from all around the world today.'],
  mission:['Mission Board','excited','Missions! Let\u2019s move together.','We checked the Mission Board today. Teamwork!'],
+ music:['Music Hub','excited','Music time! Let\u2019s stream together.','We checked the Music Team Hub today. Time to stream!'],
  scrapbook:['Scrapbook','happy','Let\u2019s make a scrapbook page!','We peeked at the scrapbook maker today. I have ideas!'],
  willaughers:['WILLaughers','happy','Memes! Keep it fun and kind.','We visited WILLaughers today. Kind jokes only.'],
  'williever-id':['WILLiever ID','excited','Make your WILLiever ID!','We looked at the WILLiever ID maker today.'],
