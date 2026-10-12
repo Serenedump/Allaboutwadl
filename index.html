@@ -1074,8 +1074,8 @@ function clipInfo(u){
  return{p:host}}
 function mk(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function hostOf(u){try{return new URL(u).hostname}catch(e){return''}}
-function clipResolve(u,cb){var k='wa_cr_'+u;try{var s=JSON.parse(localStorage.getItem(k)||'null');if(s&&s.url&&Date.now()-s.t<10800000){cb(s);return}}catch(e){}
- fetch(SB+'/functions/v1/clip-resolve',{method:'POST',headers:{'Content-Type':'application/json',apikey:AK},body:JSON.stringify({url:u})}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){if(!j||!j.url)return;j.t=Date.now();try{localStorage.setItem(k,JSON.stringify(j))}catch(e){}cb(j)}).catch(function(){})}
+function clipResolve(u,cb){var k='wa_cr_'+u;try{var s=JSON.parse(localStorage.getItem(k)||'null');if(s&&s.url&&s.thumb&&Date.now()-s.t<10800000){cb(s);return}}catch(e){}
+ fetch(SB+'/functions/v1/clip-resolve',{method:'POST',headers:{'Content-Type':'application/json',apikey:AK},body:JSON.stringify({url:u})}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){if(!j||!j.url)return;j.t=Date.now();if(j.thumb){try{localStorage.setItem(k,JSON.stringify(j))}catch(e){}}cb(j)}).catch(function(){})}
 function clipCard(c){
  var info=clipInfo(c.url);if(!info)return null;
  var a=mk('article','cc');clipFill(a,c,info);
